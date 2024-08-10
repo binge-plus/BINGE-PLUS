@@ -1,0 +1,291 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Style for header link */
+.header-container a.header {
+    text-decoration: none; /* Remove underline */
+    color: #ff6347; /* Tomato color for consistency */
+}
+
+.header {
+    font-size: 45px;
+    font-weight: bold;
+    color: #ff6347; /* Tomato color for header */
+    text-align: left;
+    margin-top: 20px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.header-icons {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.header-icon img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.sub-header {
+    font-size: 20.28px;
+    color: #ff6347;
+    text-align: left;
+}
+
+.search-bar {
+    text-align: right;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.search-input {
+    width: 401px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.movie-card {
+    flex: 1 1 15%; /* Adjust percentage to fit 5 cards per row */
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 15px;
+    width: 300px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.movie-card img {
+    max-width: 100%;
+    border-radius: px;
+}
+
+.movie-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+.movie-details {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+}
+
+.movie-description {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.movie-rating {
+    font-size: 16px;
+    color: #ff9800;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.movie-detail-card {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: left;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-detail-image {
+    width: 50%;
+    border-radius: 10px;
+    max-width: px; /* Adjust as needed */
+}
+
+.movie-detail-info {
+    text-align: left;
+    margin-top: 1px;
+}
+
+.movie-detail-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.movie-detail-details {
+    font-size: 16px;
+    color: #888;
+    margin-top: 10px;
+    line-height: 1;
+}
+
+.movie-detail-description {
+    font-size: 16px;
+    color: #666;
+    font-weight: bold;
+    margin-top: 15px;
+    line-height: 1;
+}
+
+.movie-detail-rating {
+    font-size: 17px;
+    color: #ff9800;
+    margin-top: 15px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* Additional styles for new details */
+.movie-detail-release-date {
+    font-size: 0.969em;
+    color: #666;
+    font-weight: bold;
+    margin-top: 15px;
+    
+}
+
+.movie-detail-genre {
+    font-size: 0.969em;
+    color: #666;
+    font-weight: bold;
+    margin-top: 15px;
+    line-height: 1;
+}
+
+.movie-detail-director {
+    font-size: 0.969em;
+    color: #666;
+    font-weight: bold;
+    margin-top: 15px;
+    line-height: 1;
+}
+
+.movie-detail-cast {
+    font-size: 0.969em;
+    color: #666;
+    font-weight: bold;
+    margin-top: 15px;
+    line-height: 1;
+}
+
+.movie-detail-release-date {
+    font-size: 0.969em;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+
+.movie-detail-genre {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.movie-detail-director {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.movie-detail-link {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #ff6347;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-right: 20px;
+}
+
+.movie-detail-link:hover {
+    background-color: #e5533c; /* Darker tomato color */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.call-to-action {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #080001;
+    padding: 0 20px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
