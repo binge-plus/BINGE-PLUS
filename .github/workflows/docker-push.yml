@@ -13,7 +13,7 @@ jobs:
     
     strategy:
       matrix:
-        image_name: ["BINGE-Plus"] # Define multiple image names if needed
+        image_name: ["binge-plus"] # Define multiple image names if needed
 
     steps:
       - name: Checkout code
