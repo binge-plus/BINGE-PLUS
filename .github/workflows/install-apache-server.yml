@@ -19,14 +19,9 @@ jobs:
         host: ${{ secrets.GCP_VM_HOST }}
         username: ${{ secrets.GCP_VM_USERNAME }}
         key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-        command: | 
-          echo "Updating package lists..."
+        script: | 
           sudo apt-get update
-          
-          echo "Installing Apache2..."
           sudo apt-get install -y apache2
-          
-          echo "Starting Apache2..."
           sudo systemctl start apache2
           
     - name: Check Apache2 Status
@@ -35,10 +30,7 @@ jobs:
         host: ${{ secrets.GCP_VM_HOST }}
         username: ${{ secrets.GCP_VM_USERNAME }}
         key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-        command: |  
-          echo "Enabling Apache2 to start on boot..."
+        script: |  
           sudo systemctl enable apache2
-          
-          echo "Checking Apache2 status..."
           sudo systemctl status apache2 -l | tee apache_status.log
           cat apache_status.log  # Output the status log to GitHub Actions logs
