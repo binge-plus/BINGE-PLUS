@@ -20,6 +20,7 @@ jobs:
         username: ${{ secrets.GCP_VM_USERNAME }}
         key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
         script: | 
+          echo "updating-resources"
           sudo apt-get update
           sudo apt-get install -y apache2
           sudo systemctl start apache2
