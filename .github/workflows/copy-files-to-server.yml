@@ -21,17 +21,7 @@ jobs:
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
             sudo mkdir -p /var/www/html/bingeplus 
-            sudo chmod -R 755 /var/www/html/bingeplus
-
-      - name: Extract files on GCP VM
-        uses: appleboy/ssh-action@v0.1.0
-        with:
-          host: ${{ secrets.GCP_VM_HOST }}
-          username: ${{ secrets.GCP_VM_USERNAME }}
-          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-          script: |
-            sudo tar -xzf /var/www/html/bingeplus/mjzpTIsiHP.tar.gz -C /var/www/html/bingeplus --no-same-permissions --no-same-owner
-            sudo rm /var/www/html/bingeplus/mjzpTIsiHP.tar.gz
+            sudo chown -R binge+:binge+ /var/www/html/bingeplus
 
       - name: Copy files to GCP VM
         uses: appleboy/scp-action@master 
