@@ -35,3 +35,12 @@ jobs:
           sudo systemctl enable apache2
           sudo systemctl status apache2 -l | tee apache_status.log
           cat apache_status.log  # Output the status log to GitHub Actions logs
+
+    - name: Check Apache2 Status
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.GCP_VM_HOST }}
+        username: ${{ secrets.GCP_VM_USERNAME }}
+        key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+        script: | 
+           sudo rm /var/www/html/index.html
