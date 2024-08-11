@@ -36,7 +36,7 @@ jobs:
           sudo systemctl status apache2 -l | tee apache_status.log
           cat apache_status.log  # Output the status log to GitHub Actions logs
 
-    - name: Check Apache2 Status
+    - name: Remove Apache-server home page file #so that we will have our index.html file inside the folder so that we can access our site by just hitting our External-IP
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.GCP_VM_HOST }}
