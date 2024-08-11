@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
             sudo mkdir -p /var/www/html/bingeplus 
-            sudo chmod 755 /var/www/html/bingeplus
+            sudo chmod -R 755 /var/www/html/bingeplus
 
       - name: Extract files on GCP VM
         uses: appleboy/ssh-action@v0.1.0
