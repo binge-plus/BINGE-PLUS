@@ -1,4 +1,4 @@
-name: Notify on Push
+name: Notify on Binge+ Telegram Channel
 
 on:
   push:
