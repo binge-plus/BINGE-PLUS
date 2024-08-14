@@ -3,7 +3,7 @@ name: Notify on Push
 on:
   push:
     branches:
-      - notify-telegram-channel  # Change this to the branch you want to monitor
+      - dev  # Change this to the branch you want to monitor
 
 jobs:
   notify:
