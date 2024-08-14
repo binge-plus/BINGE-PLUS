@@ -1,17 +1,15 @@
+
 import os
 import requests
+import time
 
-# Fetch bot token and chat ID from environment variables
-TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN') # Add Token in your secrets
-TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')     # Add channel id in your secrets
-
-if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-    raise ValueError("TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID environment variables must be set")
-
+# Configuration
+TELEGRAM_BOT_TOKEN = '6384770295:AAH_FlqDRXL49GM8eR5yH_WJ-K24Dsm5B4g'
+TELEGRAM_CHAT_ID = '-1001715673902'  # Use '@channelname' or your channel ID
 TIMESTAMP_FILE = 'last_message_timestamp.txt'
-COOL_DOWN_PERIOD = 2 * 60 * 60  # 2 hours in seconds
+COOL_DOWN_PERIOD = 12 * 60 * 60  # 2 hours in seconds
 
-def can_send_message():                                                         
+def can_send_message():
     """Check if the cooldown period has passed since the last message."""
     if os.path.exists(TIMESTAMP_FILE):
         with open(TIMESTAMP_FILE, 'r') as file:
@@ -24,7 +22,7 @@ def update_timestamp():
     with open(TIMESTAMP_FILE, 'w') as file:
         file.write(str(time.time()))
 
-def send_telegram_message(message):                                         
+def send_telegram_message(message):
     """Send a message to Telegram."""
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {
