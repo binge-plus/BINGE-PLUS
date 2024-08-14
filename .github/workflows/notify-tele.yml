@@ -18,6 +18,13 @@ jobs:
         with:
           python-version: '3.9'  # Set the Python version you need
 
+      - name: Restore timestamp file
+        id: timestamp
+        uses: actions/cache@v3
+        with:
+          path: last_message_timestamp.txt
+          key: timestamp-cache
+
       - name: Install dependencies
         run: |
           pip install requests
@@ -28,3 +35,10 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python notify.py
+
+      - name: Save timestamp file
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: timestamp
+          path: last_message_timestamp.txt
