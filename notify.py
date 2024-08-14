@@ -4,10 +4,10 @@ import requests
 import time
 
 # Configuration
-# TELEGRAM_BOT_TOKEN = '6384770295:AAH_FlqDRXL49GM8eR5yH_WJ-K24Dsm5B4g'
-# TELEGRAM_CHAT_ID = '-1001715673902'  # Use '@channelname' or your channel ID
-TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+TELEGRAM_BOT_TOKEN = '6384770295:AAH_FlqDRXL49GM8eR5yH_WJ-K24Dsm5B4g'
+TELEGRAM_CHAT_ID = '-1001715673902'  # Use '@channelname' or your channel ID
+# TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+# TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 TIMESTAMP_FILE = 'last_message_timestamp.txt'
 COOL_DOWN_PERIOD = 12 * 60 * 60  # 2 hours in seconds
 
