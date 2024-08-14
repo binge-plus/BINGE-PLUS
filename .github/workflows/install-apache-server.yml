@@ -1,0 +1,37 @@
+name: Install Apache-Server
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  install-apache:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install and Enable Apache2 on the GCP server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.GCP_VM_HOST }}
+        username: ${{ secrets.GCP_VM_USERNAME }}
+        key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+        script: | 
+          echo "updating-resources"
+          sudo apt-get update
+          sudo apt-get install -y apache2
+          sudo systemctl start apache2
+          
+    - name: Check Apache2 Status
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.GCP_VM_HOST }}
+        username: ${{ secrets.GCP_VM_USERNAME }}
+        key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+        script: |  
+          sudo systemctl enable apache2
+          sudo systemctl status apache2 -l | tee apache_status.log
+          cat apache_status.log  # Output the status log to GitHub Actions logs
