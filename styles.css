@@ -121,8 +121,9 @@ body {
 }
 
 .movie-detail-card {
+
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     align-items: left;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -131,13 +132,22 @@ body {
     margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
+@media screen and (min-width: 1024px) {
+.movie-detail-card{
+    flex-direction:row-reverse;
+}
+}
 .movie-detail-image {
-    width: 50%;
+    flex-shrink: 0;
+    width: 100%;
     border-radius: 10px;
     max-width: px; /* Adjust as needed */
 }
-
+@media screen and (min-width: 1024px) {
+    .movie-detail-image{
+        width: 50%;
+    }
+}
 .movie-detail-info {
     text-align: left;
     margin-top: 1px;
