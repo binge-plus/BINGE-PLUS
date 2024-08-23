@@ -39,6 +39,14 @@ const movies = [
         "image": "https://img.theweek.in/content/dam/week/week/review/movies/images/2024/7/11/Kakuda.jpg",
         "link": "movie_detail.html?title=kakuda"
     },
+    {
+        "title": "Deadpool & Wolverine",
+        "details": "720p | 1080p",
+        "description": "Deadpool is being chased by the TVA and he needs to find a variant of wolverine to save his timeline",
+        "rating": "8.0/10",
+        "image": "https://images.app.goo.gl/dywboavrPkYGUrHdA",
+        "link": "movie_detail.html?title=Deadpool3"
+    },
 ];
 
 function displayMovies(moviesToDisplay) {

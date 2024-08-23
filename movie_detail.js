@@ -90,6 +90,24 @@ const movies = [
             "Pooja Gor"
         ]
     },
+    {
+        "title": "Deadpool & Wolverine",
+        "details": "720p | 1080p",
+        "description": "Deadpool is being chased by the TVA and he needs to find a variant of wolverine to save his timeline",
+        "rating": "7.0/10",
+        "image": "https://www.google.com/imgres?q=deadpool%203%20poster&imgurl=http%3A%2F%2Fwww.impawards.com%2F2024%2Fposters%2Fdeadpool_and_wolverine_ver11_xlg.jpg&imgrefurl=http%3A%2F%2Fwww.impawards.com%2F2024%2Fdeadpool_and_wolverine_ver11_xlg.html&docid=Tih6zig6bZRwSM&tbnid=FoVN8s-yFP2BOM&vet=12ahUKEwivjvaQpYqIAxUgUGcHHdRrOfcQM3oFCIEBEAA..i&w=1080&h=1080&hcb=2&ved=2ahUKEwivjvaQpYqIAxUgUGcHHdRrOfcQM3oFCIEBEAA",
+        "link": "movie_detail.html?title=Deadpool3",
+        "trailer": "https://www.youtube.com/watch?v=73_1biulkYk",
+        "releaseDate": "2024-07-26",
+        "genre": "Sci-fi , Comedy",
+        "director": "Shawn Levy",
+        "cast": [
+            "Ryan Reynolds",
+            "Hugh Jackman",
+            "Emma Corin",
+            "Matthew Macfadyen"
+        ]
+    },
 
 ];
 
@@ -101,7 +119,7 @@ function displayMovieDetails(movie) {
     const container = document.getElementById("movie-details-container");
     let linkHtml = '';
     if (movie.link) {
-        linkHtml = `<a href="${movie.link}" class="movie-detail-link" target="_blank">Visit Movie Site</a>`;
+        linkHtml = `<a href="${movie.link}" class="movie-detail-link">Visit Movie Site</a>`;
     }
     let trailerHtml = '';
     if (movie.trailer) {
