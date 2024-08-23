@@ -26,7 +26,7 @@ body {
 }
 
 .header-container {
-    flex: 1 1 15%;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
@@ -37,16 +37,23 @@ body {
 .header-icons {
     display: flex;
     gap: 32px;
-    align-items: right;
+    align-items: center;
 }
-
 
 .header-icon img {
     width: 30px;
     height: 30px;
-    vertical-align: right;
+    vertical-align: middle;
 }
 
+.sub-header-container {
+    flex: 1 1 15%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
 
 
 .sub-header {
@@ -90,6 +97,7 @@ body {
     margin: 15px;
     width: 300px;
     height: auto;
+    gap: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     background-color: #f9f9f9;
@@ -97,19 +105,19 @@ body {
     text-decoration: none;
     color: inherit;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 800px) {
     .movie-card {
         flex: 1 1 calc(33.333% - 30px); /* 3 cards per row with margin adjustment */
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .movie-card {
         flex: 1 1 calc(50% - 30px); /* 2 cards per row for tablets */
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 450px) {
     .movie-card {
         flex: 1 1 100%; /* 1 card per row for mobile */
     }
