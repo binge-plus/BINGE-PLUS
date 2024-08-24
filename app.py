@@ -17,6 +17,7 @@ collection = db['movies']
 # Define File Paths
 json_file_path = 'movie_template.json'
 checksum_file_path = 'previous_checksum.txt'
+details_default = "720p | 1080p"  # Default value for the Details field
 
 # Function to Calculate a Simple Checksum of the JSON Content
 def calculate_checksum(data):
@@ -28,7 +29,7 @@ st.title("Movie Data Submission")
 # Form to Capture Movie Details
 with st.form(key='movie_form'):
     title = st.text_input("Title", placeholder="Enter the movie title")
-    details = st.text_input("Details", placeholder="Enter movie details")
+    details = st.text_input("Details", value=details_default, placeholder="Enter movie details")
     description = st.text_area("Description", placeholder="Enter movie description")
     rating = st.text_input("Rating", placeholder="Enter movie rating (e.g., 8.5/10)")
     image = st.text_input("Image URL", placeholder="Enter the URL of the movie poster image")
@@ -68,7 +69,7 @@ with st.form(key='movie_form'):
             # Prepare Movie Data
             movie_data.update({
                 "Title": title,
-                "Details": details,
+                "Details": details,  # Preserve the updated details field
                 "Description": description,
                 "Rating": rating,
                 "Image": image,
@@ -102,7 +103,7 @@ with st.form(key='movie_form'):
                         # Clear the JSON File (Except 'Link' and 'Details' Fields) with Specific Formatting
                         new_data = {
                             "Title": "",
-                            "Details": "720p | 1080p",
+                            "Details": details_default,  # Ensure Details is preserved with default value
                             "Description": "",
                             "Rating": "",
                             "Image": "",
