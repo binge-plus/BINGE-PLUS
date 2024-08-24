@@ -1,0 +1,53 @@
+name: Streamlit App Deploy
+on:
+  push:
+    branches:
+      - streamlit_add_movies
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create Dir streamlit
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            sudo mkdir -p /home/binge+/streamlit
+            sudo chown -R binge+:binge+ /home/binge+/streamlit
+
+      - name: Copy files to GCP VM
+        uses: appleboy/scp-action@master 
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          source: "."  
+          target: "/home/binge+/streamlit"  # Target directory on GCP VM
+
+      - name: Install Python Requirements
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+             cd /home/binge+/streamlit
+             pip3 install -r requirements.txt
+
+      - name: Start streamlit
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+             cd /home/binge+/streamlit
+             chmod +x start_streamlit.sh 
+             ./start_streamlit.sh

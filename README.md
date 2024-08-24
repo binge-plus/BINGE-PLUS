@@ -1,2 +1,10 @@
-# BINGE-
-Welcome to binge+! Please be aware that our site does not support or provide access to pirated movies or series. The content available on binge+ is solely for demonstration purposes. This project is designed to showcase our DevOps tools and practices.
+# Movie Data Submission App
+
+## Overview
+This is a Streamlit app that allows users to submit movie data to a MongoDB database.
+
+## Setup
+
+1. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
