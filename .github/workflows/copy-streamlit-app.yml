@@ -45,17 +45,16 @@ jobs:
             pip install --upgrade pip  # Upgrade pip to the latest version
             pip install -r requirements.txt  # Install the required Python packages
 
-      - name: Run streamlit
+      - name: Run Streamlit and show URL
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.GCP_VM_HOST }}
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-        env:
-          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
-          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           script: |
             cd /home/binge+/streamlit
             source venv/bin/activate  # Activate the virtual environment
             chmod +x start_streamlit.sh 
             ./start_streamlit.sh  # Start the Streamlit application
+            # Capture the output and show in GitHub Actions logs
+            curl http://$(hostname -I | awk '{print $1}'):8501  # Replace port if needed
