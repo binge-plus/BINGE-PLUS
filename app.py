@@ -3,6 +3,12 @@ from pymongo import MongoClient
 import json
 import os
 
+# Set the page configuration
+st.set_page_config(
+    page_title="Binge+ Add Movies",  # Title to be displayed in the browser tab
+    page_icon=":movie_camera:",  # Optional: an emoji or an icon to be displayed in the browser tab
+)
+
 # MongoDB Connection
 client = MongoClient('mongodb+srv://bingemovies:CWuhFDboOssypOfD@binge.qvrdf.mongodb.net/')
 db = client['BINGE']
@@ -26,7 +32,7 @@ with st.form(key='movie_form'):
     description = st.text_area("Description", placeholder="Enter movie description")
     rating = st.text_input("Rating", placeholder="Enter movie rating (e.g., 8.5/10)")
     image = st.text_input("Image URL", placeholder="Enter the URL of the movie poster image")
-    visit_movie = st.text_input("Visit Movie", placeholder="Enter the URL to visit the movie e.g., Goog;e drive link ")
+    visit_movie = st.text_input("Visit Movie", placeholder="Enter the URL to visit the movie e.g., Google Drive link")
     trailer = st.text_input("Trailer", placeholder="Enter the URL of the movie trailer")
     release_date = st.text_input("Release Date", placeholder="Enter release date (e.g., 25-08-2024)")
     genre = st.text_input("Genre", placeholder="Enter the genre of the movie")
