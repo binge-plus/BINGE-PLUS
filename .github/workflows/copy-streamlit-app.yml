@@ -56,5 +56,3 @@ jobs:
             source venv/bin/activate  # Activate the virtual environment
             chmod +x start_streamlit.sh 
             ./start_streamlit.sh  # Start the Streamlit application
-            # Capture the output and show in GitHub Actions logs
-            curl http://$(hostname -I | awk '{print $1}'):8501  # Replace port if needed
