@@ -31,15 +31,18 @@ jobs:
           source: "."  
           target: "/home/binge+/streamlit"  # Target directory on GCP VM
 
-      - name: Install Python Requirements
+      - name: Set up Python environment and install dependencies
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.GCP_VM_HOST }}
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
-             cd /home/binge+/streamlit
-             pip install -r requirements.txt --break-system-packages
+            cd /home/binge+/streamlit
+            python3 -m venv venv  # Create a virtual environment
+            source venv/bin/activate  # Activate the virtual environment
+            pip install --upgrade pip  # Upgrade pip to the latest version
+            pip install -r requirements.txt  # Install the required Python packages
 
       - name: Start streamlit
         uses: appleboy/ssh-action@master
@@ -48,6 +51,7 @@ jobs:
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
-             cd /home/binge+/streamlit
-             chmod +x start_streamlit.sh 
-             ./start_streamlit.sh
+            cd /home/binge+/streamlit
+            source venv/bin/activate  # Activate the virtual environment
+            chmod +x start_streamlit.sh 
+            ./start_streamlit.sh  # Start the Streamlit application
