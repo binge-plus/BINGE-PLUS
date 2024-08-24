@@ -29,7 +29,10 @@ st.title("Movie Data Submission")
 # Form to Capture Movie Details
 with st.form(key='movie_form'):
     title = st.text_input("Title", placeholder="Enter the movie title")
-    details = st.text_input("Details", value=details_default, placeholder="Enter movie details")
+    
+    # Details is read-only
+    st.text_input("Details", value=details_default, disabled=True)
+    
     description = st.text_area("Description", placeholder="Enter movie description")
     rating = st.text_input("Rating", placeholder="Enter movie rating (e.g., 8.5/10)")
     image = st.text_input("Image URL", placeholder="Enter the URL of the movie poster image")
@@ -69,7 +72,7 @@ with st.form(key='movie_form'):
             # Prepare Movie Data
             movie_data.update({
                 "Title": title,
-                "Details": details,  # Preserve the updated details field
+                "Details": details_default,  # Preserve the default value
                 "Description": description,
                 "Rating": rating,
                 "Image": image,
