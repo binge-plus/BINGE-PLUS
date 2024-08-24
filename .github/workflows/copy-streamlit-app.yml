@@ -7,6 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 4  # Ensure the job doesn't run indefinitely
 
     steps:
       - name: Checkout code
