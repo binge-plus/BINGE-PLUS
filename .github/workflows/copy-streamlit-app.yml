@@ -56,3 +56,6 @@ jobs:
             source venv/bin/activate  # Activate the virtual environment
             chmod +x start_streamlit.sh 
             ./start_streamlit.sh  # Start the Streamlit application
+        env:
+          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
