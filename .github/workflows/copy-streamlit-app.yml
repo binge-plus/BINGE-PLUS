@@ -39,7 +39,7 @@ jobs:
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
              cd /home/binge+/streamlit
-             pip3 install -r requirements.txt
+             pip install -r requirements.txt --break-system-packages
 
       - name: Start streamlit
         uses: appleboy/ssh-action@master
