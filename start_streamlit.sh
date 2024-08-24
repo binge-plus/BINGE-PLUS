@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Export environment variables for authentication
+export ADMIN_USERNAME=${ADMIN_USERNAME}
+export ADMIN_PASSWORD=${ADMIN_PASSWORD}
+
 # Activate the virtual environment
 source /home/binge+/streamlit/venv/bin/activate
 
