@@ -45,12 +45,15 @@ jobs:
             pip install --upgrade pip  # Upgrade pip to the latest version
             pip install -r requirements.txt  # Install the required Python packages
 
-      - name: Start streamlit
+      - name: Run streamlit
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.GCP_VM_HOST }}
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+        env:
+          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           script: |
             cd /home/binge+/streamlit
             source venv/bin/activate  # Activate the virtual environment
