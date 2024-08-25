@@ -2,6 +2,11 @@ import streamlit as st
 from pymongo import MongoClient
 import json
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file located outside the project directory
+dotenv_path = '/home/binge+/.env'  # Update this path to the location of your .env file
+load_dotenv(dotenv_path=dotenv_path)
 
 # Fetch credentials from environment variables
 ADMIN_USERNAME = os.getenv('ADMIN_USERNAME')
