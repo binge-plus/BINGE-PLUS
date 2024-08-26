@@ -60,7 +60,9 @@ app.use(express.json());
 // API route to fetch movies
 app.use('/', router);
 
-// Serve static files from the "bingeplus" directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(express.static(path.join(__dirname, '../')));
 
 // Route for the root path
