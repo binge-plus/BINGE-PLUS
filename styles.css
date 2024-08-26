@@ -294,7 +294,26 @@ body {
     margin-right: 20px;
 }
 
+.movie-detail-trailer {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #ff6347;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-right: 20px;
+}
+
 .movie-detail-link:hover {
+    background-color: #e5533c; /* Darker tomato color */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.movie-detail-trailer:hover {
     background-color: #e5533c; /* Darker tomato color */
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
