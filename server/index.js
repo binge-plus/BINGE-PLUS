@@ -35,7 +35,7 @@
 //   useUnifiedTopology: true,
 // })
 // .then(() => console.log('Connected to MongoDB'))
-// .catch((err) => console.error('Failed to connect to MongoDB', err));
+// // .catch((err) => console.error('Failed to connect to MongoDB', err));
 
 // // Start the server
 // const PORT = process.env.PORT || 8080;
@@ -69,6 +69,17 @@ app.use(express.static(path.join(__dirname, '../')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
+
+// MongoDB Connection String (Your MongoDB Atlas URI)
+const mongoURI = 'mongodb+srv://bingemovies:CWuhFDboOssypOfD@binge.qvrdf.mongodb.net/BINGE';
+
+// Connect to MongoDB Atlas
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch((err) => console.error('Failed to connect to MongoDB', err));
 
 // Start the server
 const PORT = process.env.PORT || 8080;
