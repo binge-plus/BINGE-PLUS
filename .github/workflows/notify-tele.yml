@@ -13,40 +13,40 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Set up SSH
+        uses: appleboy/ssh-action@v0.1.1
         with:
-          python-version: '3.11'  # Set the Python version you need
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
 
-      - name: Restore timestamp file
-        id: restore-timestamp
-        run: |
-          # Create directory if it doesn't exist
-          mkdir -p ${{ runner.temp }}
-          # Restore the timestamp file from the artifact if it exists
-          if [ -f ${{ runner.temp }}/last_message_timestamp.txt ]; then
-            cp ${{ runner.temp }}/last_message_timestamp.txt ${{ runner.workspace }}/last_message_timestamp.txt
-          else
-            touch ${{ runner.workspace }}/last_message_timestamp.txt
-          fi
-
-      - name: Install dependencies
-        run: |
-          pip install requests
-
-      - name: Run notification script
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: |
-          python notify.py
-
-      - name: Save timestamp file
-        if: success()
-        uses: actions/upload-artifact@v3
+      - name: Install Python and Set Up Environment on Server
+        uses: appleboy/ssh-action@v0.1.1
         with:
-          name: timestamp
-          path: ${{ runner.temp }}/last_message_timestamp.txt
-          run: |
-            cp ${{ runner.workspace }}/last_message_timestamp.txt ${{ runner.temp }}/last_message_timestamp.txt
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            echo "Updating resources and installing Python"
+            sudo apt-get update
+            sudo apt-get install -y python3 python3-venv python3-pip
+            # Create a virtual environment
+            python3 -m venv /var/www/html/bingeplus/venv
+            # Activate the virtual environment and install dependencies
+            source /var/www/html/bingeplus/venv/bin/activate
+            pip install requests
+            # Ensure the `notify.py` script is present in the desired directory
+            mkdir -p /var/www/html/bingeplus
+            cp ${{ github.workspace }}/notify.py /var/www/html/bingeplus/
 
+      - name: Run notification script on Server
+        uses: appleboy/ssh-action@v0.1.1
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            cd /var/www/html/bingeplus
+            # Activate the virtual environment
+            source venv/bin/activate
+            python notify.py
