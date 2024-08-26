@@ -28,9 +28,6 @@ jobs:
             # Activate the virtual environment and install dependencies
             source /var/www/html/bingeplus/venv/bin/activate
             pip install requests
-            # Ensure the `notify.py` script is present in the desired directory
-            mkdir -p /var/www/html/bingeplus
-            cp ${{ github.workspace }}/notify.py /var/www/html/bingeplus/
 
       - name: Run notification script on Server
         uses: appleboy/ssh-action@master
@@ -42,4 +39,4 @@ jobs:
             cd /var/www/html/bingeplus
             # Activate the virtual environment
             source venv/bin/activate
-            python notify.py
+            python3 notify.py
