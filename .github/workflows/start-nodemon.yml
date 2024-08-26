@@ -1,4 +1,4 @@
-name: Copy files to GCP-VM
+name: Start Nodemon
 
 on:
   push:
