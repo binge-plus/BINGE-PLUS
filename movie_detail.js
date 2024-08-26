@@ -4,7 +4,7 @@ function getMovieTitleFromURL() {
 }
 async function fetchMovieDetails() {
     const title = getMovieTitleFromURL();
-    const response = await fetch(`http://localhost:5555/movies/find/${title}`);
+    const response = await fetch(`http://localhost:8080/movies/find/${title}`);
     const movie = await response.json();
 
     // Assuming `movie` contains the movie object from MongoDB/
