@@ -1,4 +1,3 @@
-
 import os
 import requests
 import time
@@ -9,7 +8,7 @@ TELEGRAM_CHAT_ID = '-1001715673902'  # Use '@channelname' or your channel ID
 # TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 # TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 TIMESTAMP_FILE = 'last_message_timestamp.txt'
-COOL_DOWN_PERIOD = 12 * 60 * 60  # 2 hours in seconds
+COOL_DOWN_PERIOD = 12 * 60 * 60  # 12 hours in seconds
 
 def can_send_message():
     """Check if the cooldown period has passed since the last message."""
