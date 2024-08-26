@@ -19,11 +19,13 @@ jobs:
           python-version: '3.11'  # Set the Python version you need
 
       - name: Restore timestamp file
-        id: timestamp
-        uses: actions/cache@v3
-        with:
-          path: last_message_timestamp.txt
-          key: timestamp-cache
+        id: restore-timestamp
+        run: |
+          if [ -f last_message_timestamp.txt ]; then
+            cp last_message_timestamp.txt ${{ runner.temp }}/last_message_timestamp.txt
+          else
+            touch ${{ runner.temp }}/last_message_timestamp.txt
+          fi
 
       - name: Install dependencies
         run: |
@@ -42,3 +44,6 @@ jobs:
         with:
           name: timestamp
           path: last_message_timestamp.txt
+          run: |
+            cp ${{ runner.temp }}/last_message_timestamp.txt last_message_timestamp.txt
+
