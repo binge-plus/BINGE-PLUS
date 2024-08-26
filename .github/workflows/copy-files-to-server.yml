@@ -1,4 +1,4 @@
-name: Copy files to GCP-VM
+name: Copy files and Start Nodemon Service
 
 on:
   push:
@@ -20,23 +20,39 @@ jobs:
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
-            sudo mkdir -p /var/www/html/bingeplus 
+            sudo mkdir -p /var/www/html/bingeplus
             sudo chown -R binge+:binge+ /var/www/html/bingeplus
 
       - name: Copy files to GCP VM
-        uses: appleboy/scp-action@master 
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.GCP_VM_HOST }}
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-          source: "."  
+          source: "."
           target: "/var/www/html/bingeplus"  # Target directory on GCP VM
 
-      - name: restart apache2
+  start_nodemon:
+    runs-on: ubuntu-latest
+    needs: deploy  # Ensures this job runs after the 'deploy' job
+
+    steps:
+      - name: Start Nodemon
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.GCP_VM_HOST }}
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
-            sudo systemctl restart apache2 
+            cd /var/www/html/bingeplus/server
+            chmod +x start_nodemon.sh
+            ./start_nodemon.sh  # Start the nodemon in Background
+
+      - name: Restart Apache2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            sudo systemctl restart apache2
