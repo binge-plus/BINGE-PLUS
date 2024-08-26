@@ -71,7 +71,7 @@ app.get('/', (req, res) => {
 });
 
 // MongoDB Connection String (Your MongoDB Atlas URI)
-const mongoURI = 'mongodb+srv://bingemovies:CWuhFDboOssypOfD@binge.qvrdf.mongodb.net/BINGE';
+const mongoURI = 'mongodb+srv://bingemovies:CWuhFDboOssypOfD@binge.qvrdf.mongodb.net/test';
 
 // Connect to MongoDB Atlas
 mongoose.connect(mongoURI, {
@@ -82,7 +82,7 @@ mongoose.connect(mongoURI, {
 .catch((err) => console.error('Failed to connect to MongoDB', err));
 
 // Start the server
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5555;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
