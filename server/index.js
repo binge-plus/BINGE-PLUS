@@ -51,7 +51,7 @@ import { fileURLToPath } from 'url';
 import router from './routes/movieRouter.js';
 import cors from 'cors';
 
-const app = express();;
+const app = express();
 
 // Middleware
 app.use(cors());
