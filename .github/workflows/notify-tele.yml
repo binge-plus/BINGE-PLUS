@@ -21,10 +21,13 @@ jobs:
       - name: Restore timestamp file
         id: restore-timestamp
         run: |
-          if [ -f last_message_timestamp.txt ]; then
-            cp last_message_timestamp.txt ${{ runner.temp }}/last_message_timestamp.txt
+          # Create directory if it doesn't exist
+          mkdir -p ${{ runner.temp }}
+          # Restore the timestamp file from the artifact if it exists
+          if [ -f ${{ runner.temp }}/last_message_timestamp.txt ]; then
+            cp ${{ runner.temp }}/last_message_timestamp.txt ${{ runner.workspace }}/last_message_timestamp.txt
           else
-            touch ${{ runner.temp }}/last_message_timestamp.txt
+            touch ${{ runner.workspace }}/last_message_timestamp.txt
           fi
 
       - name: Install dependencies
@@ -43,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: timestamp
-          path: last_message_timestamp.txt
+          path: ${{ runner.temp }}/last_message_timestamp.txt
           run: |
-            cp ${{ runner.temp }}/last_message_timestamp.txt last_message_timestamp.txt
+            cp ${{ runner.workspace }}/last_message_timestamp.txt ${{ runner.temp }}/last_message_timestamp.txt
 
