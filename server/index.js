@@ -2,8 +2,17 @@ import express from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import router from './routes/movieRouter.js';
+import cors from 'cors';
 
 const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// API route to fetch movies
+app.use('/', router);
 
 // Resolve __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
