@@ -57,11 +57,13 @@ const PORT = 8080;
 app.use(cors());
 app.use(express.json());
 
-
 // API route to fetch movies
-
-
 app.use('/', router);
+
+// Route for the root path
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../index.html'));
+});
 
 // Start server
 app.listen(PORT, () => {
