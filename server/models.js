@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-mongoose.connect("mongodb+srv://bingemovies:CWuhFDboOssypOfD@binge.qvrdf.mongodb.net/test").then(() => console.log("Connected to MongoDB")).catch(error => console.error("Failed to connect to MongoDB", error));
+mongoose.connect("mongodb+srv://bingemovies:CWuhFDboOssypOfD@binge.qvrdf.mongodb.net/BINGE").then(() => console.log("Connected to MongoDB")).catch(error => console.error("Failed to connect to MongoDB", error));
 
 const movieSchema = new mongoose.Schema({
     
