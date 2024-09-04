@@ -12,7 +12,7 @@ body {
 }
 
 .header {
-    font-size: 45px;
+    font-size: 15px;
     font-weight: bold;
     color: #ff6347; /* Tomato color for header */
     text-align: left;
@@ -46,8 +46,31 @@ body {
     vertical-align: middle;
 }
 
+/* .sub-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px; 
+}
+
+.sub-header {
+    font-size: 18px; 
+    flex-grow: 1; 
+}
+
+.search-bar {
+    text-align: right;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.search-input {
+    padding: 7px;
+    font-size: 16px; 
+} */
+
 .sub-header-container {
-    flex: 1 1 15%;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
