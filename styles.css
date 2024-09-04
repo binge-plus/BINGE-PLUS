@@ -20,7 +20,7 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-    .header{
+    .header {
         font-size: 30px;
     }
 }
@@ -55,23 +55,17 @@ body {
     padding: 0 20px;
 }
 
-
 .sub-header {
     font-size: 20.28px;
     color: #ff6347;
     text-align: left;
 }
 
-
-
 .search-bar {
     text-align: right;
     margin-top: 20px;
     padding: 0 20px;
 }
-
-
-
 
 .search-input {
     width: 401px;
@@ -88,9 +82,8 @@ body {
     padding: 20px;
 }
 
-
 .movie-card {
-    flex: 1 1 15%; /* Adjust percentage to fit 5 cards per row */
+    flex: 1 1 15%;
     border: 1px solid #ddd;
     border-radius: 15px;
     padding: 10px;
@@ -105,21 +98,22 @@ body {
     text-decoration: none;
     color: inherit;
 }
+
 @media screen and (min-width: 800px) {
     .movie-card {
-        flex: 1 1 calc(33.333% - 30px); /* 3 cards per row with margin adjustment */
+        flex: 1 1 calc(33.333% - 30px);
     }
 }
 
 @media screen and (max-width: 800px) {
     .movie-card {
-        flex: 1 1 calc(50% - 30px); /* 2 cards per row for tablets */
+        flex: 1 1 calc(50% - 30px);
     }
 }
 
 @media screen and (max-width: 450px) {
     .movie-card {
-        flex: 1 1 100%; /* 1 card per row for mobile */
+        flex: 1 1 100%;
     }
 }
 
@@ -130,7 +124,7 @@ body {
 
 .movie-card img {
     max-width: 100%;
-    border-radius: px;
+    border-radius: 10px;
 }
 
 .movie-title {
@@ -146,12 +140,6 @@ body {
     margin-top: 5px;
 }
 
-@media screen and (min-width: 375px) {
-    .movie-details{
-        font-size: 7px;
-    }
-    }
-
 .movie-description {
     font-size: 14px;
     color: #666;
@@ -166,58 +154,57 @@ body {
     font-weight: bold;
 }
 
+/* Movie Detail Card Enhancement */
 .movie-detail-card {
-
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start; /* Align items to the left */
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 15px;
-    padding: 20px;
-    margin: 20px;
+    padding: 20px; 
+    margin: 20px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Prevent content from overflowing */
+    min-width: 1100px; /* Adjust the max width */
+    margin-left: 10; /* Remove auto margin to position to the left */
+    margin-right: auto; /* Ensure the card is left-aligned */
 }
-@media screen and (min-width: 1024px) {
-.movie-detail-card{
-    flex-direction:row-reverse;
-}
-}
+
 .movie-detail-image {
-    flex-shrink: 0;
     width: 100%;
+    max-height: 400px; /* Control the max height */
+    object-fit: cover; /* Ensure image fits without distortion */
     border-radius: 10px;
-    max-width: px; /* Adjust as needed */
+    margin-bottom: 15px;
 }
-@media screen and (min-width: 1024px) {
-    .movie-detail-image{
-        width: 50%;
-    }
-}
+
 .movie-detail-info {
     text-align: left;
     margin-top: 1px;
+    flex: 1; /* Allow content to expand */
 }
 
 .movie-detail-title {
     font-size: 28px;
     font-weight: bold;
     color: #333;
+    margin-bottom: 10px;
 }
 
 .movie-detail-details {
     font-size: 16px;
     color: #888;
     margin-top: 10px;
-    line-height: 1;
+    line-height: 1.5; /* Improved line height for readability */
 }
 
 .movie-detail-description {
     font-size: 16px;
     color: #666;
-    font-weight: bold;
+    font-weight: normal; /* Normal weight for better readability */
     margin-top: 15px;
-    line-height: 1;
+    line-height: 1.6; /* Improved line height */
 }
 
 .movie-detail-rating {
@@ -225,80 +212,26 @@ body {
     color: #ff9800;
     margin-top: 15px;
     font-weight: bold;
-    line-height: 1;
 }
 
 /* Additional styles for new details */
-.movie-detail-release-date {
-    font-size: 0.969em;
-    color: #666;
-    font-weight: bold;
-    margin-top: 15px;
-    
-}
-
-.movie-detail-genre {
-    font-size: 0.969em;
-    color: #666;
-    font-weight: bold;
-    margin-top: 15px;
-    line-height: 1;
-}
-
-.movie-detail-director {
-    font-size: 0.969em;
-    color: #666;
-    font-weight: bold;
-    margin-top: 15px;
-    line-height: 1;
-}
-
+.movie-detail-release-date,
+.movie-detail-genre,
+.movie-detail-director,
 .movie-detail-cast {
-    font-size: 0.969em;
+    font-size: 14px;
     color: #666;
-    font-weight: bold;
-    margin-top: 15px;
-    line-height: 1;
+    font-weight: normal; /* Consistent font weight */
+    margin-top: 10px;
+    line-height: 1.5;
 }
 
-.movie-detail-release-date {
-    font-size: 0.969em;
-    font-weight: bold;
-    color: #666;
-    margin-bottom: 10px;
-    margin-top: 25px;
-}
-
-.movie-detail-genre {
-    color: #666;
-    font-style: italic;
-    margin-bottom: 10px;
-}
-
-.movie-detail-director {
-    font-style: italic;
-    margin-bottom: 10px;
-}
-
-.movie-detail-link {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 15px 20px;
-    font-size: 18px;
-    color: #ffffff;
-    background-color: #ff6347;
-    border-radius: 20px;
-    text-decoration: none;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    margin-right: 20px;
-}
-
+.movie-detail-link,
 .movie-detail-trailer {
     display: inline-block;
     margin-top: 25px;
-    padding: 15px 20px;
-    font-size: 18px;
+    padding: 10px 15px;
+    font-size: 16px;
     color: #ffffff;
     background-color: #ff6347;
     border-radius: 20px;
@@ -308,11 +241,7 @@ body {
     margin-right: 20px;
 }
 
-.movie-detail-link:hover {
-    background-color: #e5533c; /* Darker tomato color */
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-}
-
+.movie-detail-link:hover,
 .movie-detail-trailer:hover {
     background-color: #e5533c; /* Darker tomato color */
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
@@ -337,8 +266,8 @@ body {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .modal-content {
@@ -348,7 +277,7 @@ body {
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .close {
@@ -363,4 +292,141 @@ body {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Main Content Container */
+#main-content-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: space-between; /* Align content in a row */
+    margin-bottom: 20px; /* Space at the bottom for movies */
+}
+
+/* Movie Details Container */
+#movie-details-container {
+    flex: 3; /* Take more space */
+    margin-right: 20px;
+}
+
+/* Right Side Content Container */
+#right-side-content-container {
+    flex: 1; /* Take less space */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 1px solid #ddd;
+}
+
+/* Left Side Content */
+#left-side-content {
+    margin-bottom: 5px;
+}
+
+#logo-section img {
+    width: 100%; /* Reduce the width to 80% of the container */
+    max-width: 500px; /* Maximum width of 300px */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px;
+}
+
+/* Right Side Content */
+#right-side-content {
+    margin-bottom: 5px;
+}
+
+/* Feedback Form Section */
+.feedback-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.feedback-container h1 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.feedback-container label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.feedback-container input, 
+.feedback-container select, 
+.feedback-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.feedback-container button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.feedback-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Popup Message */
+.popup-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-message button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.popup-message button:hover {
+    background-color: #0056b3;
+}
+
+/* Movie Card Styles */
+.movie-card {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+/* Call to Action */
+.call-to-action {
+    text-align: center;
+    margin: 30px auto;
+    font-size: 16px;
+    color: #333;
 }
