@@ -1,6 +1,6 @@
 async function fetchMovies() {
     try {
-        const response = await fetch('http:/34.45.6.128:4444/movies/find', {
+        const response = await fetch('http://34.45.6.128:4444/movies/find', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
