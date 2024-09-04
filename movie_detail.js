@@ -19,7 +19,7 @@ async function fetchMovieDetails() {
     try {
         console.log('Fetching movie:', title);
         const encodedTitle = encodeURIComponent(title);
-        const url = `http://34.45.6.128:4444/movies/find/${encodedTitle}`;
+        const url = `http://34.45.6.128:5555/movies/find/${encodedTitle}`;
         console.log('Fetch URL:', url);
         const response = await fetch(url);
         if (!response.ok) {
@@ -59,7 +59,7 @@ async function displayMovieDetails() {
             </div>
         </div>
     `;
-    
+
     document.getElementById('movie-details-container').innerHTML = movieDetailCard;
 }
 
