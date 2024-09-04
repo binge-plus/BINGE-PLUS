@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header-container">
+        <a href="index.html" class="header">B.I.N.G.E +</a>
+        <div class="header-icons">
+            <a class="header-icon" href="https://t.me/rdpchintukchii" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+            </a>
+            <a class="header-icon" href="https://github.com/ankushjha-aj" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+            </a>
+            <a class="header-icon" href="https://www.linkedin.com/in/jhaankush/" target="_blank">
+                <img src="https://www.logo.wine/a/logo/LinkedIn/LinkedIn-Icon-Logo.wine.svg" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+
+    <!-- Feedback Form Section -->
+    <div class="feedback-container">
+        <h1>We Value Your Feedback</h1>
+        <form id="feedback-form" action="/submit-feedback" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+                <option value="">Select a rating</option>
+                <option value="1">1 - Poor</option>
+                <option value="2">2 - Fair</option>
+                <option value="3">3 - Good</option>
+                <option value="4">4 - Very Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4" required></textarea>
+
+            <button type="submit" class="submit-button">Submit Feedback</button>
+        </form>
+    </div>
+
+    <!-- Popup Message -->
+    <div id="popup-message" class="popup-message">
+        <p>Feedback recorded successfully!</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="call-to-action">Thank you for your input! Your feedback helps us improve.</div>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+            document.getElementById('popup-message').style.display = 'block'; // Show the popup message
+        });
+
+        function closePopup() {
+            document.getElementById('popup-message').style.display = 'none'; // Hide the popup message
+            document.getElementById('feedback-form').reset(); // Clear the form fields
+        }
+    </script>
+</body>
+</html>
