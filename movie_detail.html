@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header-container">
+        <a href="index.html" class="header">B.I.N.G.E +</a>
+        <div class="header-icons">
+            <a class="header-icon" href="https://t.me/rdpchintukchii" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+            </a>
+            <a class="header-icon" href="https://github.com/ankushjha-aj" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+            </a>
+            <a class="header-icon" href="https://www.linkedin.com/in/jhaankush/" target="_blank">
+                <img src="https://www.logo.wine/a/logo/LinkedIn/LinkedIn-Icon-Logo.wine.svg" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+
+    <!-- Sub-header Section -->
+    <div class="header-container">
+        <div class="sub-header">Movie Details</div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div id="main-content-container">
+        <!-- Movie Details Container -->
+        <div id="movie-details-container">
+            <!-- Movie details will be injected here by movie_detail.js -->
+        </div>
+
+        <!-- Right Side Content -->
+        <div id="right-side-content-container">
+            <div id="left-side-content">
+                <h2>About Binge+</h2>
+                <p><strong>BINGE+ is a demonstration project that showcases the capabilities of DevOps tools in delivering seamless OTT (Over-The-Top) streaming services. BINGE+allows users to stream a curated selection of movies and series, highlighting how technologies like Docker, GitHub Actions, Terraform, Streamlit, Node.js, HTML, and CSS come together to create a robust, scalable, and efficient streaming platform.</strong></p>
+            </div>
+
+            <!-- Logo Section -->
+            <div id="logo-section">
+                 <img src="logo/logo.svg" alt="gif">
+            </div>
+
+            <div id="right-side-content">
+                <h2>Please Share Your Feedback!</h2>
+                <p>We value your opinions and would love to hear from you. Click the button below to provide your feedback.</p>
+                <a href="feedback.html" class="feedback-button"><strong>Give Feedback</strong></a>    
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Movies Container -->
+    <div id="movies-container" class="container"></div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Important Notice!</h2>
+            <p>Welcome to binge+! Please be aware that our site does not support or provide access to pirated movies or series. The content available on binge+ is solely for demonstration purposes. This project is designed to showcase our DevOps tools and practices.</p>
+            <ul>
+                <li><strong>Cloud Technologies</strong></li>
+                <li><strong>Docker</strong></li>
+                <li><strong>CI/CD Pipelines</strong></li>
+                <li><strong>GitHub Actions</strong></li>
+            </ul>
+            <p>We use HTML, CSS, and JavaScript for development, and we plan to enhance our site in the future by using Streamlit.</p>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="call-to-action">Explore more movies and find your next binge-watch!</div>
+
+    <!-- JavaScript -->
+    <script src="movie_detail.js"></script>
+    <script>
+        async function fetchMovies() {
+            try {
+                const response = await fetch('/api/movies/random');
+                const movies = await response.json();
+                const movieList = document.getElementById('movies-container');
+
+                movieList.innerHTML = ''; // Clear the container before adding new content
+
+                movies.forEach(movie => {
+                    const movieCard = document.createElement('div');
+                    movieCard.className = 'movie-card';
+                    movieCard.onclick = () => {
+                        window.location.href = `movie_detail.html?title=${encodeURIComponent(movie.Title)}`;
+                    };
+
+                    const title = movie.Title || 'Untitled';
+                    const image = movie.Image || 'default-poster.jpg';
+                    const description = movie.Description || 'No description available.';
+                    const genre = movie.Genre || 'Unknown genre';
+
+                    movieCard.innerHTML = `
+                        <img src="${image}" alt="${title} Poster">
+                        <div class="movie-title">${title}</div>
+                        <div class="movie-description">${description}</div>
+                        <div class="movie-details"><strong>Genre:</strong> ${genre}</div>
+                    `;
+
+                    movieList.appendChild(movieCard);
+                });
+            } catch (error) {
+                console.error('Error fetching movies:', error);
+            }
+        }
+
+        // Call fetchMovies to load random movies
+        fetchMovies();
+
+        // Modal functionality
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+
+        window.onload = function() {
+            modal.style.display = "block";
+        };
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+</body>
+</html>

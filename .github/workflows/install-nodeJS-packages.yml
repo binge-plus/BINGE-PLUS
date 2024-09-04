@@ -1,0 +1,60 @@
+name: Install Node.js Packages
+
+on:
+  push:
+    branches:
+      - binge-movies
+jobs:
+  install-node-packages:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Node.js and NPM on the GCP server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.GCP_VM_HOST }}
+        username: ${{ secrets.GCP_VM_USERNAME }}
+        key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+        script: |
+          echo "Updating resources"
+          sudo apt-get update
+          
+          # Install Node.js and npm if they are not already installed
+          if ! command -v node &> /dev/null
+          then
+              echo "Node.js not found. Installing Node.js 20 and npm."
+              curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+              sudo apt-get install -y nodejs
+          fi
+
+          # Check Node.js and npm versions
+          echo "Node.js version:"
+          node -v
+          echo "NPM version:"
+          npm -v
+
+          # Install global packages
+          sudo npm install -g nodemon
+
+          # Navigate to the project directory
+          cd /var/www/html/server
+
+          # Install local packages
+          npm install express mongoose
+
+    - name: Check Node.js Packages Status
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.GCP_VM_HOST }}
+        username: ${{ secrets.GCP_VM_USERNAME }}
+        key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+        script: |
+          echo "Checking installed versions"
+          node -v
+          npm -v
+          npx nodemon -v
+          echo "Installed packages:"
+          npm list --depth=0
