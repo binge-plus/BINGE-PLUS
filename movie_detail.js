@@ -1,22 +1,46 @@
 function getMovieTitleFromURL() {
     const params = new URLSearchParams(window.location.search);
-    return params.get("title");
+    const title = params.get("title");
+    console.log("Raw title from URL:", title);
+    if (!title) {
+        console.error("No title found in URL");
+        return null;
+    }
+    const decodedTitle = decodeURIComponent(title.replace(/%(?![0-9A-Fa-f]{2})/g, '%25'));
+    console.log("Decoded title:", decodedTitle);
+    return decodedTitle;
 }
+
 async function fetchMovieDetails() {
     const title = getMovieTitleFromURL();
-    const response = await fetch(`http://34.45.6.128:5555/movies/find/${title}`);
-    const movie = await response.json();
-
-    // Assuming `movie` contains the movie object from MongoDB/
-    return movie;
+    if (!title) {
+        console.error("No title provided in URL");
+        return null;
+    }
+    try {
+        console.log('Fetching movie:', title);
+        const encodedTitle = encodeURIComponent(title);
+        const url = `http://34.45.6.128:4444/movies/find/${encodedTitle}`;
+        console.log('Fetch URL:', url);
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const movie = await response.json();
+        console.log('Fetched movie data:', movie);
+        return movie;
+    } catch (error) {
+        console.error("Failed to fetch movie details:", error);
+        return null;
+    }
 }
 
-
-// Function to display the movie details
 async function displayMovieDetails() {
     const movie = await fetchMovieDetails();
-    console.log(movie);
-    
+    if (!movie) {
+        document.getElementById('movie-details-container').innerHTML = '<p>Failed to load movie details. Please try again later.</p>';
+        return;
+    }
 
     const movieDetailCard = `
         <div class="movie-detail-card">
@@ -30,17 +54,22 @@ async function displayMovieDetails() {
                 <div class="movie-detail-cast">Cast: ${movie.Cast.join(', ')}</div>
                 <div class="movie-detail-genre">Genre: ${movie.Genre}</div>
                 <div class="movie-detail-director">Director: ${movie.Director}</div>
-                <a href="${movie.Visit_Movie}" class="movie-detail-link">Visit Movie</a>
-                <a href="${movie.Trailer}" class="movie-detail-trailer">Watch Trailer</a>
+                <a href="${movie.Trailer}" class="movie-detail-trailer" target="_blank">Watch Trailer</a>
+                <div class="series-episodes">
+                    <h3>Episodes</h3>
+                    <ul>
+                        ${movie.Episodes.map(episode => `
+                            <li>
+                                <strong>Episode ${episode.EpisodeNumber}: ${episode.EpisodeTitle}</strong> - 
+                                <a href="${episode.EpisodeLink}" target="_blank">Watch Now</a>
+                            </li>`).join('')}
+                    </ul>
+                </div>
             </div>
         </div>
     `;
 
-    console.log(movieDetailCard);
-    
-
-    document.querySelector('#movie-details-container').innerHTML = movieDetailCard;
+    document.getElementById('movie-details-container').innerHTML = movieDetailCard;
 }
 
-// Call this function with the movie title you want to display
-displayMovieDetails();
+document.addEventListener('DOMContentLoaded', displayMovieDetails);

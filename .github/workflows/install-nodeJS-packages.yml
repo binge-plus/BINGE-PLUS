@@ -3,7 +3,7 @@ name: Install Node.js Packages
 on:
   push:
     branches:
-      - dev
+      - binge-series
 
 jobs:
   install-node-packages:

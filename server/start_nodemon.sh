@@ -4,4 +4,4 @@
 APP_FILE="index.js"
 
 # Start the Streamlit application in the background
-nohup nodemon $APP_FILE  > nodemon.log 2>&1 &
+nohup nodemon $APP_FILE  > nodemon-series.log 2>&1 &

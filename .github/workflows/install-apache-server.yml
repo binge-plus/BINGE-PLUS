@@ -3,7 +3,7 @@ name: Install Apache-Server
 on:
   push:
     branches:
-      - dev
+      - binge-series
 
 jobs:
   install-apache:
