@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | BINGE+</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #eaeaea;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Styles */
+        .header-container {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .header-icons a {
+            margin-left: 15px;
+        }
+
+        .header-icon img {
+            width: 30px;
+            height: 30px;
+            transition: opacity 0.3s;
+        }
+
+        .header-icon img:hover {
+            opacity: 0.7;
+        }
+
+        /* Contact Section Styles */
+        .contact-container {
+            padding: 40px;
+            max-width: 900px;
+            margin: 40px auto 20px auto; /* Added top margin to separate from header */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-container h1 {
+            margin-top: 0;
+            font-size: 32px;
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .contact-container p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .contact-form-container {
+            margin-top: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 15px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input, textarea {
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header-container">
+        <a href="index.html" class="header">BINGE+ MOVIES</a>
+        <div class="header-icons">
+            <a class="header-icon" href="https://t.me/rdpchintukchii" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+            </a>
+            <a class="header-icon" href="https://github.com/ankushjha-aj" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+            </a>
+            <a class="header-icon" href="https://www.linkedin.com/in/jhaankush/" target="_blank">
+                <img src="https://www.logo.wine/a/logo/LinkedIn/LinkedIn-Icon-Logo.wine.svg" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <p>We're here to help and answer any question you might have. We look forward to hearing from you!</p>
+        
+        <div class="contact-form-container">
+            <form id="contact-form" action="#" method="POST" onsubmit="showMessage(event)">
+                <label for="name"><strong>Full Name</strong></label>
+                <input type="text" id="name" name="name" placeholder="Your name..." required>
+
+                <label for="email"><strong>Email Address</strong></label>
+                <input type="email" id="email" name="email" placeholder="Your email..." required>
+
+                <label for="subject"><strong>Subject</strong></label>
+                <input type="text" id="subject" name="subject" placeholder="Subject..." required>
+
+                <label for="message"><strong>Message</strong></label>
+                <textarea id="message" name="message" placeholder="Write something..." style="height:200px" required></textarea>
+
+                <input type="submit" value="Send Message">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showMessage(event) {
+            event.preventDefault(); // Prevent form submission for demo
+            alert("Your response has been sent to the admin.");
+
+            // Clear all input fields
+            document.getElementById('contact-form').reset();
+        }
+    </script>
+</body>
+</html>
