@@ -22,15 +22,16 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.verbose=true
-            -Dsonar.projectKey=your_actual_project_key
-            -Dsonar.organization=your_actual_organization_key
+            -Dsonar.projectKey=ankushjha-aj_BINGE-PLUS
+            -Dsonar.organization=ankushjha-aj
+            -Dsonar.projectName=BINGE-PLUS
+            -Dsonar.projectVersion=1.0
             -Dsonar.sources=.
-            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.sourceEncoding=UTF-8
       - name: SonarCloud Info
         run: |
           echo "Project Key: ${{ env.SONAR_PROJECT_KEY }}"
           echo "Organization: ${{ env.SONAR_ORGANIZATION }}"
         env:
-          SONAR_PROJECT_KEY: your_actual_project_key
-          SONAR_ORGANIZATION: your_actual_organization_key
+          SONAR_PROJECT_KEY: ankushjha-aj_BINGE-PLUS
+          SONAR_ORGANIZATION: ankushjha-aj
