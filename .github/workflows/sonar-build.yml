@@ -22,7 +22,15 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=your_project_key
-            -Dsonar.organization=your_organization_key
+            -Dsonar.verbose=true
+            -Dsonar.projectKey=your_actual_project_key
+            -Dsonar.organization=your_actual_organization_key
             -Dsonar.sources=.
-            -Dsonar.branch.name=${{ github.ref_name }}
+            -Dsonar.host.url=https://sonarcloud.io
+      - name: SonarCloud Info
+        run: |
+          echo "Project Key: ${{ env.SONAR_PROJECT_KEY }}"
+          echo "Organization: ${{ env.SONAR_ORGANIZATION }}"
+        env:
+          SONAR_PROJECT_KEY: your_actual_project_key
+          SONAR_ORGANIZATION: your_actual_organization_key
