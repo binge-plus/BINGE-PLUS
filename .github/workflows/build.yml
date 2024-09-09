@@ -3,7 +3,7 @@ name: SonarCloud analysis
 on:
   push:
     branches:
-      - sonar-cloud  # update your branch after merging
+      - binge-series  # update your branch after merging
   pull_request:
     types: [opened, synchronize, reopened]
 
