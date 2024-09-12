@@ -1,3 +1,10 @@
+name: SONAR-CLOUD ANALYSIS
+on:
+  push:
+    branches:
+      - terraform-gcp-setup
+  pull_request:
+    types: [opened, synchronize, reopened]
 name: SonarCloud analysis
 
 on:
@@ -6,7 +13,6 @@ on:
       - binge-series  # update your branch after merging
   pull_request:
     types: [opened, synchronize, reopened]
-
 jobs:
   sonarcloud:
     name: SonarCloud
@@ -20,6 +26,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
         with:
           args: >
             -Dsonar.projectKey=ankushjha-aj_BINGE-PLUS
@@ -35,3 +42,4 @@ jobs:
         env:
           SONAR_PROJECT_KEY: ankushjha-aj_BINGE-PLUS
           SONAR_ORGANIZATION: ankushjha-aj
+
