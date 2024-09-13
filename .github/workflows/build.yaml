@@ -2,7 +2,7 @@ name: SONAR-CLOUD ANALYSIS
 on:
   push:
     branches:
-      - binge-movies
+      - binge-series
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
