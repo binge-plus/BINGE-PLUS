@@ -1,12 +1,10 @@
-name: SonarCloud analysis
-
+name: SONAR-CLOUD ANALYSIS
 on:
   push:
     branches:
-      - binge-movies  # your main branch
+      - binge-movies
   pull_request:
     types: [opened, synchronize, reopened]
-
 jobs:
   sonarcloud:
     name: SonarCloud
@@ -20,18 +18,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=ankushjha-aj_BINGE-PLUS
-            -Dsonar.organization=ankushjha-aj
-            -Dsonar.projectName=BINGE-PLUS
-            -Dsonar.projectVersion=1.0
-            -Dsonar.sources=.
-            -Dsonar.sourceEncoding=UTF-8
-      - name: SonarCloud Info
-        run: |
-          echo "Project Key: ${{ env.SONAR_PROJECT_KEY }}"
-          echo "Organization: ${{ env.SONAR_ORGANIZATION }}"
-        env:
-          SONAR_PROJECT_KEY: ankushjha-aj_BINGE-PLUS
-          SONAR_ORGANIZATION: ankushjha-aj
