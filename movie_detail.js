@@ -19,7 +19,7 @@ async function fetchMovieDetails() {
     try {
         console.log('Fetching movie:', title);
         const encodedTitle = encodeURIComponent(title);
-        const url = `http://34.45.6.128:1111/movies/find/${encodedTitle}`;
+        const url = `http://34.28.188.89:1111/movies/find/${encodedTitle}`;
         console.log('Fetch URL:', url);
         const response = await fetch(url);
         if (!response.ok) {
@@ -62,5 +62,22 @@ async function displayMovieDetails() {
 
     document.getElementById('movie-details-container').innerHTML = movieDetailCard;
 }
+
+const body = document.querySelector('body');
+const attr = body.getAttribute('theme');
+const button = document.querySelector('#theme-toggle');
+let flag = 0;
+button.addEventListener('click', function () {
+    if (flag == 0) {
+        body.setAttribute('theme', 'dark');
+        button.innerHTML = '🔅';
+        flag = 1;
+    }
+    else {
+        body.setAttribute('theme', 'light');
+        button.innerHTML = '🌙'
+        flag = 0;
+    }
+});
 
 document.addEventListener('DOMContentLoaded', displayMovieDetails);

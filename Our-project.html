@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BINGE+</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>BINGE+ Project README</title>
+    <link rel="stylesheet" href="project.css">
 </head>
-<body theme = "light">
+<body>
     <!-- Header Section -->
     <div class="header-container">
         <a href="index.html" class="header">BINGE+ MOVIES</a>
@@ -15,7 +15,6 @@
             <a href="https://bit.ly/binge-movies">Movies</a>
             <a href="https://bit.ly/binge-series">Series</a>
             <a href="contact.html">Contact</a>
-            
         </nav>
         <div class="header-icons">
             <a class="header-icon" href="https://t.me/rdpchintukchii" target="_blank">
@@ -27,45 +26,67 @@
             <a class="header-icon" href="https://www.linkedin.com/in/jhaankush/" target="_blank">
                 <img src="https://www.logo.wine/a/logo/LinkedIn/LinkedIn-Icon-Logo.wine.svg" alt="LinkedIn">
             </a>
-            <button id="theme-toggle" class="mode">🌙</button>
         </div>
     </div>
+
+    <!-- Main Content Section -->
+    <main>
+        <section class="content">
+            <h1>BINGE+ Streaming Service</h1>
     
-    <!-- Sub-header Section
-    <div class="sub-header-container">
-        <a href="https://bit.ly/binge-series" class="header">Series</a>  
-    </div> -->
+            <h2>Features</h2>
+            <ul>
+                <li>Movie Listings: Fetches movies from the backend using an API and displays them dynamically.</li>
+                <li>Search Functionality: Users can search for movies by title.</li>
+                <li>Feedback: Allows users to provide feedback about the platform.</li>
+                <li>Modal Alerts: Displays important notices for users.</li>
+            </ul>
+    
+            <h2>Tech Stack</h2>
+            <ul>
+                <li><strong>Frontend</strong>: HTML, CSS, JavaScript</li>
+                <li><strong>Backend</strong>: Node.js, Express</li>
+                <li><strong>DevOps</strong>: Docker, GitHub Actions, CI/CD Pipelines, Terraform</li>
+                <li><strong>Database</strong>: MongoDB (assumed)</li>
+            </ul>
+    
+            <h2>Project Structure</h2>
+            <p>The project structure is as follows:</p>
+            <ul>
+                <li>/.github/workflows/: Contains CI/CD pipeline configurations using GitHub Actions.</li>
+                <li>/server: Contains the backend server logic.</li>
+                <li>Frontend Files: index.html, movie_detail.html, feedback.html, etc.</li>
+                <li>DevOps Files: Dockerfile, start_nodemon.sh, etc.</li>
+            </ul>
+    
+            <h2>Setup Instructions</h2>
+            <ol>
+                <li><strong>Clone the Repository</strong>: <code>git clone https://github.com/yourusername/bingeplus.git</code></li>
+                <li><strong>Install Dependencies</strong>: Navigate to the `/server` folder and install Node.js dependencies using <code>npm install</code>.</li>
+                <li><strong>Run the Application</strong>: Start the backend server with <code>npm start</code>.</li>
+                <li><strong>Docker</strong>: Build and run the app using Docker: <code>docker build -t bingeplus .</code></li>
+            </ol>
+    
+            <h2>API Endpoints</h2>
+            <ul>
+                <li><strong>GET /movies/find</strong>: Fetches a list of available movies.</li>
+                <li><strong>POST /feedback</strong>: Submits user feedback.</li>
+            </ul>
+    
+            <h2>Future Enhancements</h2>
+            <ul>
+                <li>Integration with Streamlit for Python-based enhancements.</li>
+                <li>Expanded movie database with more content.</li>
+                <li>User authentication for login/signup.</li>
+            </ul>
+    
+            <h2 class="license">License</h2>
+            <p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for more details.</p>
+        </section>
+    </main>
+    
 
-    <!-- Sub-header Section -->
-    <div class="sub-header-container">
-        <div class="sub-header">Your Ultimate Destination for Streaming and Downloading Movies from Google Drive Directly</div>
-        <div class="search-bar">
-            <input type="text" id="search-input" class="search-input" placeholder="Search Movies Title...">
-        </div>
-    </div>
-
-
-    <!-- Movies Container -->
-    <div id="movies-container" class="container"></div>
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Important Notice !</h2>
-                <p>Welcome to binge+! Please be aware that our site does not support or provide access to pirated movies or series. The content available on binge+ is solely for demonstration purposes. This project is designed to showcase our DevOps tools and practices.</p> 
-                <ul>
-                    <li><strong>Cloud Technologies</strong></li>
-                    <li><strong>Docker</strong></li>
-                    <li><strong>CI/CD Pipelines</strong></li>
-                    <li><strong>GitHub Actions</strong></li>
-                </ul> 
-                <p>We use HTML, CSS, and JavaScript for development, and we plan to enhance our site in the future by using streamlit.</p> 
-            </div>
-            </div>
-
-    <!-- Call to Action -->
-    <div class="call-to-action">Enjoy Movies and series! Thanks For Visiting Our Site 🤖</div>
+    <!-- Footer Section -->
     <div class="footer">
         <div class="footer-section company">
             <ul class="footer-list">
@@ -97,7 +118,7 @@
             </ul>
         </div>
     </div>
-    </div>
+
     <!-- JavaScript File -->
     <script src="scripts.js"></script>
     <script>
@@ -126,7 +147,7 @@
     </script>
 
     <!-- Floating Button -->
-    <!--a href="https://bit.ly/binge-series" class="floating-button" target="_blank">Click Here to Go to BINGE Series Page</a-->
+    <!--<a href="https://bit.ly/binge-series" class="floating-button" target="_blank">Click Here to Go to BINGE Series Page</a>-->
 
 </body>
 </html>

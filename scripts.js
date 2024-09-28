@@ -2,7 +2,7 @@
 // Fetch movies from the backend
 async function fetchMovies() {
     try {
-        const response = await fetch('http://34.45.6.128:1111/movies/find', {
+        const response = await fetch('http://34.28.188.89:1111/movies/find', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,5 +58,21 @@ async function init() {
     });
 }
 
+const body = document.querySelector('body');
+const attr = body.getAttribute('theme');
+const button = document.querySelector('#theme-toggle');
+let flag = 0;
+button.addEventListener('click', function () {
+    if (flag == 0) {
+        body.setAttribute('theme', 'dark');
+        button.innerHTML = '🔅';
+        flag = 1;
+    }
+    else {
+        body.setAttribute('theme', 'light');
+        button.innerHTML = '🌙'
+        flag = 0;
+    }
+});
 // Initial load
 init();
