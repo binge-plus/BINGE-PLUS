@@ -3,7 +3,7 @@ name: Terraform GCP Deployment
 on:
   push:
     branches:
-      - main  # Triggers the workflow on push to the main branch
+      - terraform-gcp  # Triggers the workflow on push to the main branch
 
 jobs:
   terraform-plan:
