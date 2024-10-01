@@ -1,5 +1,5 @@
 ## NOTE: 
-- PLease Make Sure to check out this `https://github.com/binge-plus/BINGE-PLUS/tree/terraform-gcp` before proceeding Further.
+- Please Make Sure to check out this `https://github.com/binge-plus/BINGE-PLUS/tree/terraform-gcp` before proceeding further.
 
 # BINGE MOVIES
 Binge Movies is a modern web application that allows users to browse, search, and discover movies through an engaging and user-friendly interface. The application offers both frontend and backend components, making it a full-stack project with features for users to explore movie details, provide feedback, and even contact the platform. It's fully containerized for easy deployment using Docker, and the CI/CD pipeline ensures smooth integration and delivery.
@@ -27,25 +27,23 @@ Binge Movies is a modern web application that allows users to browse, search, an
 - Movie List: A homepage displaying a grid of movies, including their titles, posters, and a brief description. Users can browse and select movies to view more detailed information.
 - Movie Details: Clicking on a movie will take users to a dedicated movie details page where they can view the full description, cast, director, release date, and other metadata about the movie.
 - Search Functionality: A search bar at the top allows users to find movies by their title, genre, or other attributes, providing a fast and dynamic search experience.
-- Feedback Form: Users can submit feedback through a form, which is sent to the backend for storage in MongoDB. This allows the developers to gather insights on the app's performance and user experience.
+- Feedback Form: Users can submit feedback through a form, which is sent to the backend for storage in MongoDB. This allows the developers to gather insights into the app's performance and user experience.
 - Contact Page: A contact form where users can enter their name, email, and a message, which will be processed on the backend and sent to the support team via email.
 
 # Technologies Used
 ## Frontend:
-HTML: Used for structuring the web pages, forms, and movie display sections.
-CSS: Used for styling the components and making the site responsive. Additional files like project.css are used for advanced styling.
-JavaScript: Powers the interactive elements, such as the search functionality and dynamic movie detail loading.
+- HTML: Used for structuring the web pages, forms, and movie display sections.- CSS: Used for styling the components and making the site responsive. Additional files like project.css are used for advanced styling.
+- JavaScript: Powers the interactive elements, such as the search functionality and dynamic movie detail loading.
 
 ## Backend:
-Node.js: A powerful JavaScript runtime used to build the server-side of the application.
-Express.js: A minimalist Node.js framework used to handle routing, requests, and serve the frontend.
-MongoDB Atlas: A cloud-based NoSQL database service used for storing movies, feedback, and contact data.
+- Node.js: A powerful JavaScript runtime used to build the server-side of the application.
+- Express.js: A minimalist Node.js framework used to handle routing, requests, and serve the frontend.
+- MongoDB Atlas: A cloud-based NoSQL database service used for storing movies, feedback, and contact data.
 
 ## Containerization and Deployment:
-Docker: The application is fully containerized, making it easy to run and deploy across different environments.
-GitHub Actions: Used for setting up continuous integration and continuous deployment (CI/CD) pipelines.
-Heroku: The app is deployed on Heroku using the Docker image built through GitHub Actions.
-Apache: The workflow configures and installs the Apache web server for hosting the application in production.
+- Docker: The application is fully containerized, making it easy to run and deploy across different environments.
+- GitHub Actions: Used for setting up continuous integration and continuous deployment (CI/CD) pipelines.
+- Apache: The workflow configures and installs the Apache web server for hosting the application in production.
 
 ## Notifications (using chat id and bot token)
 Integrated with a custom Python script (notify.py) that sends notifications to the BINGE-PLUS Channel whenever key events occur, such as successful builds or deployments.
