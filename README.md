@@ -47,7 +47,7 @@ GitHub Actions: Used for setting up continuous integration and continuous deploy
 Heroku: The app is deployed on Heroku using the Docker image built through GitHub Actions.
 Apache: The workflow configures and installs the Apache web server for hosting the application in production.
 
-## Notifications:(USING CHAT ID AND BOT TOKEN): 
+## Notifications (using chat id and bot token)
 Integrated with a custom Python script (notify.py) that sends notifications to the BINGE-PLUS Channel whenever key events occur, such as successful builds or deployments.
 
 # Required Secrets in GitHub
