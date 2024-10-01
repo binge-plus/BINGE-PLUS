@@ -47,12 +47,8 @@ GitHub Actions: Used for setting up continuous integration and continuous deploy
 Heroku: The app is deployed on Heroku using the Docker image built through GitHub Actions.
 Apache: The workflow configures and installs the Apache web server for hosting the application in production.
 
-## Notifications (using chat id and bot token) 
-Integrated with a custom Python script (notify.py) that sends notifications to the BINGE-PLUS Channel whenever key events occur, such as successful builds or deployments.
-
 # Required Secrets in GitHub
 To ensure your workflows run smoothly, you'll need to store sensitive information in GitHub Secrets. Follow the steps below to configure them:
-
 - GITHUB_TOKEN: Automatically provided by GitHub for authenticating actions.
 - SONAR_TOKEN: Token from your SonarCloud account for analysis authentication.
 - DOCKERHUB_USERNAME & DOCKERHUB_PASSWORD: For authenticating Docker builds and pushes.
@@ -74,10 +70,8 @@ The project utilizes GitHub Actions for continuous integration and deployment. T
 - Building the Project: Automatically builds the Docker image for the application.
 - Pushing Docker Images: Pushes the Docker image to Docker Hub for storage.
 - Installing Dependencies: Installs required Node.js packages, configures Apache, and sets up the application.
-- Notifications: Sends deployment status and notifications via Telegram to the BINGE-PLUS Channel for visibility into each step of the pipeline.
 
 ## GitHub Actions Workflow Breakdown:
 - Build and Test: Ensures the application builds successfully and passes tests.
 - Docker Push: Pushes the Docker image to Docker Hub.
-- Notify via Telegram: The notify.py script triggers alerts for each successful deployment, providing visibility for the team.
 
