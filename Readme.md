@@ -32,20 +32,19 @@ Binge Series is a modern web application that allows users to browse, search, an
 
 # Technologies Used
 ## Frontend:
-HTML: Used for structuring the web pages, forms, and movie display sections.
-CSS: Used for styling the components and making the site responsive. Additional files like project.css are used for advanced styling.
-JavaScript: Powers the interactive elements, such as the search functionality and dynamic movie detail loading.
+- HTML: Used for structuring the web pages, forms, and movie display sections.
+- CSS: Used for styling the components and making the site responsive. Additional files like project.css are used for advanced styling.
+- JavaScript: Powers the interactive elements, such as the search functionality and dynamic movie detail loading.
 
 ## Backend:
-Node.js: A powerful JavaScript runtime used to build the server-side of the application.
-Express.js: A minimalist Node.js framework used to handle routing, requests, and serve the frontend.
-MongoDB Atlas: A cloud-based NoSQL database service used for storing series, feedback, and contact data.
+- Node.js: A powerful JavaScript runtime used to build the server-side of the application.
+- Express.js: A minimalist Node.js framework used to handle routing, requests, and serve the frontend.
+- MongoDB Atlas: A cloud-based NoSQL database service used for storing series, feedback, and contact data.
 
 ## Containerization and Deployment:
-Docker: The application is fully containerized, making it easy to run and deploy across different environments.
-GitHub Actions: Used for setting up continuous integration and continuous deployment (CI/CD) pipelines.
-Heroku: The app is deployed on Heroku using the Docker image built through GitHub Actions.
-Apache: The workflow configures and installs the Apache web server for hosting the application in production.
+- Docker: The application is fully containerized, making it easy to run and deploy across different environments.
+- GitHub Actions: Used for setting up continuous integration and continuous deployment (CI/CD) pipelines.
+- Apache: The workflow configures and installs the Apache web server for hosting the application in production.
 
 # Required Secrets in GitHub
 To ensure your workflows run smoothly, you'll need to store sensitive information in GitHub Secrets. Follow the steps below to configure them:
