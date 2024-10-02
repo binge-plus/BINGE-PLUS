@@ -29,7 +29,7 @@ async function displayMovies(movies) {
         movieCard.href = `movie_detail.html?title=${encodedTitle}`;
         movieCard.className = "movie-card";
         movieCard.innerHTML = `
-            <img src="${movie.Image}" alt="${movie.Title}">
+            <img src="${movie.Image}" alt="${movie.Title}" class = "movie-img">
             <div class="movie-title">${movie.Title}</div>
             <div class="movie-details">${movie.Details}</div>
             <div class="movie-description">${movie.Description}</div>
