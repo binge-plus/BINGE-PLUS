@@ -3,7 +3,7 @@ name: Copy files and Start Nodemon Service
 on:
   push:
     branches:
-      - binge-movies
+      - main
 
 jobs:
   deploy:
