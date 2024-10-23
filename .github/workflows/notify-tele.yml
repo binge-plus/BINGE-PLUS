@@ -3,7 +3,7 @@ name: Notify on Binge+ Telegram Channel
 on:
   push:
     branches:
-      - binge-movies # Change this to the branch you want to monitor
+      - main # Change this to the branch you want to monitor
 
 jobs:
   notify:
