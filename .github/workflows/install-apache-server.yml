@@ -3,7 +3,7 @@ name: Install Apache-Server
 on:
   push:
     branches:
-      - binge-movies
+      - main
 
 jobs:
   install-apache:
