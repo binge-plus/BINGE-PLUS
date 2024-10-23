@@ -3,7 +3,7 @@ name: Install Node.js Packages
 on:
   push:
     branches:
-      - binge-movies
+      - main
 jobs:
   install-node-packages:
     runs-on: ubuntu-latest
