@@ -1,0 +1,42 @@
+name: Notify on Binge+ Telegram Channel
+
+on:
+  push:
+    branches:
+      - binge-movies # Change this to the branch you want to monitor
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Python and Set Up Environment on Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            echo "Updating resources and installing Python"
+            sudo apt-get update
+            sudo apt-get install -y python3 python3-venv python3-pip
+            # Create a virtual environment
+            python3 -m venv /var/www/html/bingeplus-movies/venv
+            # Activate the virtual environment and install dependencies
+            source /var/www/html/bingeplus-movies/venv/bin/activate
+            pip install requests
+
+      - name: Run notification script on Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            cd /var/www/html/bingeplus-movies
+            # Activate the virtual environment
+            source venv/bin/activate
+            python3 notify.py

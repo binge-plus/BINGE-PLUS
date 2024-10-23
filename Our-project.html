@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BINGE+ Project README</title>
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header-container">
+        <a href="index.html" class="header">BINGE+ MOVIES</a>
+        <nav class="header-nav">
+            <a href="https://bit.ly/binge-movies-">Home</a>
+            <a href="https://bit.ly/binge-movies-">Movies</a>
+            <a href="https://bit.ly/binge-series-">Series</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-icons">
+            <a class="header-icon" href="https://t.me/rdpchintukchii" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+            </a>
+            <a class="header-icon" href="https://github.com/ankushjha-aj" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+            </a>
+            <a class="header-icon" href="https://www.linkedin.com/in/jhaankush/" target="_blank">
+                <img src="https://www.logo.wine/a/logo/LinkedIn/LinkedIn-Icon-Logo.wine.svg" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <main>
+        <section class="content">
+            <h1>BINGE+ Streaming Service</h1>
+    
+            <h2>Features</h2>
+            <ul>
+                <li>Movie Listings: Fetches movies from the backend using an API and displays them dynamically.</li>
+                <li>Search Functionality: Users can search for movies by title.</li>
+                <li>Feedback: Allows users to provide feedback about the platform.</li>
+                <li>Modal Alerts: Displays important notices for users.</li>
+            </ul>
+    
+            <h2>Tech Stack</h2>
+            <ul>
+                <li><strong>Frontend</strong>: HTML, CSS, JavaScript</li>
+                <li><strong>Backend</strong>: Node.js, Express</li>
+                <li><strong>DevOps</strong>: Docker, GitHub Actions, CI/CD Pipelines, Terraform</li>
+                <li><strong>Database</strong>: MongoDB (assumed)</li>
+            </ul>
+    
+            <h2>Project Structure</h2>
+            <p>The project structure is as follows:</p>
+            <ul>
+                <li>/.github/workflows/: Contains CI/CD pipeline configurations using GitHub Actions.</li>
+                <li>/server: Contains the backend server logic.</li>
+                <li>Frontend Files: index.html, movie_detail.html, feedback.html, etc.</li>
+                <li>DevOps Files: Dockerfile, start_nodemon.sh, etc.</li>
+            </ul>
+    
+            <h2>Setup Instructions</h2>
+            <ol>
+                <li><strong>Clone the Repository</strong>: <code>git clone https://github.com/yourusername/bingeplus.git</code></li>
+                <li><strong>Install Dependencies</strong>: Navigate to the `/server` folder and install Node.js dependencies using <code>npm install</code>.</li>
+                <li><strong>Run the Application</strong>: Start the backend server with <code>npm start</code>.</li>
+                <li><strong>Docker</strong>: Build and run the app using Docker: <code>docker build -t bingeplus .</code></li>
+            </ol>
+    
+            <h2>API Endpoints</h2>
+            <ul>
+                <li><strong>GET /movies/find</strong>: Fetches a list of available movies.</li>
+                <li><strong>POST /feedback</strong>: Submits user feedback.</li>
+            </ul>
+    
+            <h2>Future Enhancements</h2>
+            <ul>
+                <li>Integration with Streamlit for Python-based enhancements.</li>
+                <li>Expanded movie database with more content.</li>
+                <li>User authentication for login/signup.</li>
+            </ul>
+    
+            <h2 class="license">License</h2>
+            <p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for more details.</p>
+        </section>
+    </main>
+    
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <div class="footer-section company">
+            <ul class="footer-list">
+                <li class="footer-title">COMPANY</li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="Our-project.html">About Project</a></li>
+            </ul>
+        </div>
+        <div class="footer-section services">
+            <ul class="footer-list">
+                <li class="footer-title">SERVICES</li>
+                <li><a href="https://bit.ly/binge-movies-">Movies</a></li>
+                <li><a href="https://bit.ly/binge-series-">Series</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <ul class="footer-list">
+                <li class="footer-title">CONTACT</li>
+                <li><a href="https://t.me/rdpchintukchii" target="_blank">Telegram</a></li>
+                <li><a href="https://github.com/ankushjha-aj" target="_blank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/jhaankush/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div class="footer-section legal">
+            <ul class="footer-list">
+                <li class="footer-title">LEGAL</li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- JavaScript File -->
+    <script src="scripts.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Open the modal when the page loads
+        window.onload = function() {
+            modal.style.display = "block";
+        };
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+
+    <!-- Floating Button -->
+    <!--<a href="https://bit.ly/binge-series" class="floating-button" target="_blank">Click Here to Go to BINGE Series Page</a>-->
+
+</body>
+</html>
