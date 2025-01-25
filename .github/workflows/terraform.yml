@@ -1,15 +1,9 @@
 name: Terraform GCP Deployment
 
 on:
-  workflow_dispatch:  # Manual Trigger
-    inputs:
-      env:
-        description: 'Environment'
-        required: true
-        type: choice
-        options:
-          - terraform-gcp
-        default: terraform-gcp
+  workflow_dispatch:
+  schedule:
+    - cron: '39 5 25 * *'  # At 0539 on the 25th day of every month
 
 jobs:
   terraform-plan:
