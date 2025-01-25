@@ -25,4 +25,4 @@ module "firewall" {
   source     = "./modules/firewall"
   project_id = var.project_id
   network    = "default"
-} 
+}  
