@@ -5,17 +5,17 @@ on:
       - binge-movies
 
 jobs:
-  build_and_push:
+  setup-build-publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
     - name: Google Cloud Auth
       uses: 'google-github-actions/auth@v2'
       with:
-        credentials_json: ${{ secrets.GCP_CREDENTIALS }} 
+        credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
     - name: Configure Docker Auth
       run: |
