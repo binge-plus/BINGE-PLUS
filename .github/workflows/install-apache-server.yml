@@ -1,10 +1,14 @@
 name: Install Apache-Server
 
+# on:
+#   push:
+#     branches:
+#       - main
 on:
-  push:
-    branches:
-      - main
-
+  workflow_dispatch:
+  schedule:
+    - cron: '39 5 25 * *'  # At 0539 on the 25th day of every month
+    
 jobs:
   install-apache:
     runs-on: ubuntu-latest
