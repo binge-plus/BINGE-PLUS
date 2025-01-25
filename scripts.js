@@ -2,7 +2,7 @@
 // Fetch movies from the backend
 async function fetchMovies() {
     try {
-        const response = await fetch('http://34.28.188.89:1111/movies/find', {
+        const response = await fetch('http://34.55.187.199:1111/movies/find', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

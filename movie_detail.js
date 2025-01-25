@@ -19,7 +19,7 @@ async function fetchMovieDetails() {
     try {
         console.log('Fetching movie:', title);
         const encodedTitle = encodeURIComponent(title);
-        const url = `http://34.28.188.89:1111/movies/find/${encodedTitle}`;
+        const url = `http://34.55.187.199:1111/movies/find/${encodedTitle}`;
         console.log('Fetch URL:', url);
         const response = await fetch(url);
         if (!response.ok) {

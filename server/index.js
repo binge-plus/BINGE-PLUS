@@ -55,5 +55,5 @@ app.get('/', (req, res) => {
 // Start the server
 const PORT = process.env.PORT || 1111;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://34.28.188.89:${PORT}`);
+  console.log(`Server is running on http://34.55.187.199:${PORT}`);
 });
