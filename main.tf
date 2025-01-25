@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "bingeplus-tfstate"
+    bucket = "binge-plus-tfstate"
     prefix = "terraform/state"
   }
 }
