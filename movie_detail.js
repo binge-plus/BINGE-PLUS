@@ -11,7 +11,7 @@ function getMovieTitleFromURL() {
     return decodedTitle;
 }
 
-async function fetchMovieDetails() {
+async function fetchMovieDetails() { 
     const title = getMovieTitleFromURL();
     if (!title) {
         console.error("No title provided in URL");
@@ -20,7 +20,7 @@ async function fetchMovieDetails() {
     try {
         console.log('Fetching movie:', title);
         const encodedTitle = encodeURIComponent(title);
-        const url = `http://34.28.188.89:4444/movies/find/${encodedTitle}`;
+        const url = `http://34.55.187.199:4444/movies/find/${encodedTitle}`;
         console.log('Fetch URL:', url);
         const response = await fetch(url);
         if (!response.ok) {
