@@ -1,9 +1,19 @@
 name: Terraform GCP Deployment
 
 on:
-  push:
-    branches:
-      - terraform-gcp  # Triggers the workflow on push to the main branch
+  workflow_dispatch:  # Manual Trigger 
+      inputs:
+        env:
+          description: 'Environment'
+          required: true
+          type: choice
+          default: terraform-gcp
+          options:
+            - terraform-gcp
+
+  # push:
+  #   branches:
+  #     - terraform-gcp  # Triggers the workflow on push to the main branch
 
 jobs:
   terraform-plan:
