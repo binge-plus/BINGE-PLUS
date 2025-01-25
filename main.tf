@@ -26,7 +26,3 @@ module "firewall" {
   project_id = var.project_id
   network    = "default"
 }
-
-module "artifact_registry" {
-  source      = "./modules/artifacts-registry"  
-}
