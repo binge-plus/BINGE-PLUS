@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build and Push Docker Image To Docker Hub and Artifact Registry
 on:
   push:
     branches:
@@ -31,3 +31,21 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image_name }}:latest
+
+      - name: Google Cloud Auth
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }} 
+
+      - name: Configure Docker Auth
+        run: |
+          gcloud auth configure-docker us-central1-docker.pkg.dev
+
+      - name: Build Docker Image
+        run: |
+          docker build -t us-central1-docker.pkg.dev/binge-plus-deployment/binge-plus-registry/binge-plus-movies:${{ github.sha }} .
+
+      - name: Push to Artifact Registry
+        run: |
+          docker push us-central1-docker.pkg.dev/binge-plus-deployment/binge-plus-registry/binge-plus-movies:${{ github.sha }}
+      
