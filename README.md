@@ -1,4 +1,4 @@
-## NOTE :  
+## NOTE :    
 - Please Make Sure to check out this `https://github.com/binge-plus/BINGE-PLUS/tree/terraform-gcp` before proceeding further.
 
 # BINGE MOVIES
