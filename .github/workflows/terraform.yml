@@ -2,8 +2,8 @@ name: Terraform GCP Deployment
 
 on:
   workflow_dispatch: 
-  # schedule:
-    # - cron: '39 5 25 * *'  # At 0539 on the 25th day of every month
+  schedule:
+    - cron: '39 5 25 * *' 
 
 jobs:
   terraform-plan:
