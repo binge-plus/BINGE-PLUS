@@ -80,6 +80,20 @@ resource "google_compute_firewall" "allow_8501" {
   source_ranges = ["0.0.0.0/0"]
 }
 
+# Allow access to the workflow dashboard on port 3000 
+resource "google_compute_firewall" "allow_3000" {
+  name    = "allow-3000"
+  network = var.network
+  project = var.project_id
+
+  allow {
+    protocol = "tcp"
+    ports    = ["3000"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+}
+
 # MONGODB Connection
 resource "google_compute_firewall" "allow_mongodb" {
   name    = "allow-mongodb"
