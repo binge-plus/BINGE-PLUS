@@ -63,6 +63,9 @@ jobs:
     needs: start_nodemon  
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       # Configure AWS credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -82,6 +85,15 @@ jobs:
         run: |
           sops --decrypt github-actions-dashboard/env.enc > github-actions-dashboard/.env
 
+      - name: Copy decrypted env file to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          source: "github-actions-dashboard/.env"
+          target: "/var/www/html/bingeplus-movies/github-actions-dashboard/"
+
       - name: Start Nodemon
         uses: appleboy/ssh-action@master
         with:
@@ -100,4 +112,4 @@ jobs:
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
-            sudo systemctl restart apache2 
+            sudo systemctl restart apache2
