@@ -58,7 +58,7 @@ jobs:
             sudo systemctl restart apache2
 
   # Start Nodemon Service for github-actions-dashboard
-  start_nodemon-2: 
+  start_nodemon-monitoring-dashboard:
     runs-on: ubuntu-latest
     needs: start_nodemon  
 
@@ -80,8 +80,7 @@ jobs:
       - name: Decrypt environment variables
         shell: bash
         run: |
-          cd /github-actions-dashboard
-          sops --decrypt env.enc > .env
+          sops --decrypt github-actions-dashboard/env.enc > github-actions-dashboard/.env
 
       - name: Start Nodemon
         uses: appleboy/ssh-action@master
