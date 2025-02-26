@@ -80,7 +80,8 @@ jobs:
       - name: Decrypt environment variables
         shell: bash
         run: |
-          sops --decrypt ./github-actions-dashboard/env.enc > ./github-actions-dashboard/.env
+          cd /github-actions-dashboard
+          sops --decrypt env.enc > .env
 
       - name: Start Nodemon
         uses: appleboy/ssh-action@master
