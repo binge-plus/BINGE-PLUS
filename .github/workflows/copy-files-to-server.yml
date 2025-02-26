@@ -63,6 +63,25 @@ jobs:
     needs: start_nodemon  
 
     steps:
+      # Configure AWS credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: us-east-1
+
+      # Install Mozilla Sops
+      - name: Install Mozilla Sops Binary
+        uses: mdgreenwald/mozilla-sops-action@v1.4.1
+        with:
+          version: 'v3.7.3'
+
+      - name: Decrypt environment variables
+        shell: bash
+        run: |
+          sops --decrypt ./github-actions-dashboard/.env.enc > ./github-actions-dashboard/.env
+
       - name: Start Nodemon
         uses: appleboy/ssh-action@master
         with:
