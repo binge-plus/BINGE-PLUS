@@ -83,7 +83,7 @@ jobs:
       - name: Decrypt environment variables
         shell: bash
         run: |
-          sops --decrypt ./github-actions-dashboard/env.enc > ./github-actions-dashboard/.env
+          sops --decrypt env.enc > .env
 
       - name: Copy decrypted env file to server
         uses: appleboy/scp-action@master
@@ -91,7 +91,7 @@ jobs:
           host: ${{ secrets.GCP_VM_HOST }}
           username: ${{ secrets.GCP_VM_USERNAME }}
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
-          source: "github-actions-dashboard/.env"
+          source: ".env"
           target: "/var/www/html/bingeplus-movies/github-actions-dashboard/"
 
       - name: Start Nodemon
