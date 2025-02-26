@@ -6,7 +6,7 @@ on:
       - binge-movies
 
 jobs:
-  deploy:
+  copy-files-to-server:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +34,7 @@ jobs:
 
   start_nodemon:
     runs-on: ubuntu-latest
-    needs: deploy  # Ensures this job runs after the 'deploy' job
+    needs: copy-files-to-server  # Ensures this job runs after the 'deploy' job
 
     steps:
       - name: Start Nodemon
@@ -56,3 +56,29 @@ jobs:
           key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
           script: |
             sudo systemctl restart apache2
+
+  # Start Nodemon Service for github-actions-dashboard
+  start_nodemon-2: 
+    runs-on: ubuntu-latest
+    needs: start_nodemon  
+
+    steps:
+      - name: Start Nodemon
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            cd /var/www/html/bingeplus-movies/github-actions-dashboard
+            chmod +x start_nodemon_workflow_monitoring_dashboard.sh
+            ./start_nodemon_workflow_monitoring_dashboard.sh  
+
+      - name: Restart Apache2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GCP_VM_HOST }}
+          username: ${{ secrets.GCP_VM_USERNAME }}
+          key: ${{ secrets.GCP_VM_PRIVATE_KEY }}
+          script: |
+            sudo systemctl restart apache2 
