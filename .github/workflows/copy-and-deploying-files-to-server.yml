@@ -83,7 +83,7 @@ jobs:
       - name: Decrypt environment variables
         shell: bash
         run: |
-          sops --decrypt env.enc > .env
+          sops --decrypt c:\sops\workflow-monitoring-dashboard-env.enc > .env
 
       - name: Copy decrypted env file to server
         uses: appleboy/scp-action@master
