@@ -109,7 +109,7 @@ resource "google_compute_firewall" "allow_3001" {
 }
 
 # Allow access to the workflow dashboard on port 3002
-resource "google_compute_firewall" "allow_3001" {
+resource "google_compute_firewall" "allow_3002" {
   name    = "allow-3002"
   network = var.network
   project = var.project_id
