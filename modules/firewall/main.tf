@@ -108,6 +108,19 @@ resource "google_compute_firewall" "allow_3001" {
   source_ranges = ["0.0.0.0/0"]
 }
 
+# Allow access to the workflow dashboard on port 3002
+resource "google_compute_firewall" "allow_3001" {
+  name    = "allow-3002"
+  network = var.network
+  project = var.project_id
+
+  allow {
+    protocol = "tcp"
+    ports    = ["3002"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+}
 # MONGODB Connection
 resource "google_compute_firewall" "allow_mongodb" {
   name    = "allow-mongodb"
