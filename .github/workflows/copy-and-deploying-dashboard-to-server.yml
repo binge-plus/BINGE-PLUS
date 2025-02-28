@@ -3,7 +3,7 @@ name: Copy files and Start Nodemon Service
 on:
   push:
     branches:
-      - fix/workflow-dashboard
+      - workflow-monitoring-dashboard
 
 jobs:
   copy-files-to-server:
