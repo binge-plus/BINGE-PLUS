@@ -1,7 +1,7 @@
 async function fetchMovies() {
     try {
-        const response = await fetch('http://34.55.187.199:4444/movies/find', {
-            method: 'GET',
+        const response = await fetch('http://34.55.187.199:4444/movies/find', { 
+            method: 'GET', 
             headers: {
                 'Content-Type': 'application/json',
             },
