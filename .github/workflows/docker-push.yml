@@ -24,7 +24,7 @@ jobs:
         with:
           registry: docker.io # Optional, good practice to be explicit
           username: ankush2642
-          password:  /k8VsW!U7T@B+mY
+          password: /k8VsW!U7T@B+mY
 
       - name: Build Docker image
         run: docker build -t ankush2642/${{ matrix.image_name }}:latest .
