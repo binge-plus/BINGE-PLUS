@@ -1,12 +1,12 @@
 # Prerequisites Setup Guide
 
-This guide outlines the step-by-step process required to set up and configure the full Binge application infrastructure. Each step results in secrets or variables that are critical for the next step and must be added to your GitHub Actions secrets.
+This guide outlines the sequential setup of all repositories involved in the Binge application infrastructure. Each step will generate secrets and configurations that must be saved and passed to the **next repository's GitHub Secrets** for successful CI/CD and deployment automation.
 
 ---
 
 ## 1. Clone and Set Up `binge-script` Repository
 
-This repository contains the automation scripts necessary to set up and manage your infrastructure components.
+This repository contains automation scripts to initialize foundational services like GCP access and required APIs.
 
 **Steps:**
 
@@ -16,27 +16,25 @@ This repository contains the automation scripts necessary to set up and manage y
   cd binge-script
   ```
 
-- Follow the instructions in the `README.md` of `binge-script` to:
-  - Set up a **Google Cloud Platform (GCP) Service Account**
-  - Generate and download the **GCP credentials JSON file**
-  - Enable necessary APIs (Compute Engine, IAM, etc.)
+- Follow the instructions in `README.md` to:
+  - Set up a **GCP Service Account**
+  - Generate the **GCP credentials JSON file**
+  - Enable required APIs (Compute, IAM, Storage, etc.)
 
-**Output from this step:**
-- `GCP_SERVICE_ACCOUNT_KEY` (add this to GitHub secrets)
-- `GCP_PROJECT_ID`, `GCP_REGION`, and any relevant values
-
-**Update GitHub Secrets:**
+**Secrets Generated (for the *next repo* `binge-infra`):**
 ```
-GCP_SERVICE_ACCOUNT_KEY=<Base64-encoded service account key>
+GCP_SERVICE_ACCOUNT_KEY=<Base64-encoded JSON>
 GCP_PROJECT_ID=<your-project-id>
 GCP_REGION=<your-region>
 ```
+
+👉 **Save these in the `binge-infra` repository GitHub Secrets.**
 
 ---
 
 ## 2. Configure `binge-infra` Repository
 
-This repository manages your infrastructure as code (e.g., Terraform or Pulumi scripts).
+This repository manages cloud infrastructure using tools like Terraform or Pulumi.
 
 **Steps:**
 
@@ -46,28 +44,24 @@ This repository manages your infrastructure as code (e.g., Terraform or Pulumi s
   cd binge-infra
   ```
 
-- Replace the default secrets and variables with the outputs from Step 1.
-  - Update `terraform.tfvars` or environment-specific `.tfvars` files
-  - Confirm correct bucket names, regions, and credentials
+- Update your `.tfvars` or environment files using the secrets from `binge-script`.
 
-**Output from this step:**
-- Infrastructure variables such as:
-  - `TF_VAR_project_id`
-  - `TF_VAR_region`
-  - Any other GCP-related secrets used in infra provisioning
+- Provision your infrastructure (VMs, buckets, networks, etc.)
 
-**Update GitHub Secrets:**
+**Secrets Generated (for the *next repo* `binge-ansible`):**
 ```
-TF_VAR_project_id=<your-project-id>
-TF_VAR_region=<your-region>
-TF_VAR_credentials=<Base64-encoded GCP key if applicable>
+INFRA_SSH_PRIVATE_KEY=<SSH key to access servers>
+INFRA_VM_IPS=<Comma-separated list of provisioned VM IPs>
+GCP_PROJECT_ID=<Used again for context>
 ```
+
+👉 **Save these in the `binge-ansible` repository GitHub Secrets.**
 
 ---
 
 ## 3. Set Up `binge-ansible` Repository
 
-This repo is used to configure all servers with required packages, security, and settings.
+This repository configures all provisioned servers with necessary packages, users, and services.
 
 **Steps:**
 
@@ -77,27 +71,23 @@ This repo is used to configure all servers with required packages, security, and
   cd binge-ansible
   ```
 
-- Update `group_vars` and secret files with the necessary credentials and environment settings.
-- Modify roles to reflect services and configuration required by your application.
-- Make sure Ansible can connect to your provisioned servers (SSH keys, inventory, etc.)
+- Configure `group_vars` and roles as needed.
+- Use the secrets from `binge-infra` for Ansible SSH access and VM targeting.
 
-**Output from this step:**
-- Server-specific credentials and keys
-- Environment variable values for deployments
-- SSH private key for accessing servers
+**Secrets Generated (for the *next repo* `binge-admin`):**
+```
+DEPLOYMENT_SSH_KEY=<Private key used for deployments>
+DEPLOYMENT_HOSTS=<List of application server IPs>
+APP_ENV_VARS=<Base64-encoded .env file contents>
+```
 
-**Update GitHub Secrets:**
-```
-ANSIBLE_SSH_PRIVATE_KEY=<your-private-key>
-ANSIBLE_INVENTORY=<inventory-info>
-APP_ENV_VARS=<Base64-encoded environment values>
-```
+👉 **Save these in the `binge-admin` repository GitHub Secrets.**
 
 ---
 
 ## 4. Deploy Application via `binge-admin` Repository
 
-This repo contains your application source code, organized by branches (dev, staging, prod).
+This repository contains your actual application code and GitHub Actions for deployment.
 
 **Steps:**
 
@@ -107,23 +97,21 @@ This repo contains your application source code, organized by branches (dev, sta
   cd binge-admin
   ```
 
-- Update the secrets and environment files according to your deployment environment.
-- Set up CI/CD workflows to use the secrets you've stored.
-- Configure the appropriate deployment branches.
+- Configure your GitHub Actions workflows to use secrets from `binge-ansible`.
 
-**Output from this step:**
-- Final application-specific secrets (e.g., API keys, DB URIs)
-- Environment variable files for GitHub Actions
+- Set up environment-specific branches (e.g., `dev`, `staging`, `prod`).
 
-**Update GitHub Secrets:**
+**Secrets Used (from previous step):**
 ```
-APP_SECRET_KEY=<your-app-secret>
-DATABASE_URL=<your-db-uri>
-EXTERNAL_API_KEYS=<your-api-keys>
+DEPLOYMENT_SSH_KEY
+DEPLOYMENT_HOSTS
+APP_ENV_VARS
 ```
 
 ---
 
 ## Final Note
 
-Ensure that **every output from one step is securely stored as a GitHub Action Secret**, as it is required for the next step to function properly. This ensures a seamless, secure, and automated CI/CD pipeline across the entire Binge ecosystem.
+➡️ **Every repository's setup outputs secrets that must be saved in the *next repository’s* GitHub Secrets**. This ensures that the GitHub Actions pipelines in each stage have the necessary credentials and context to proceed.
+
+Always **encrypt sensitive values** before storing and **double-check repository access permissions**.
